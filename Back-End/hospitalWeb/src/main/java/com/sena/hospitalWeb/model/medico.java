@@ -44,7 +44,7 @@ public class medico {
 	@Column(name = "direccion", nullable = false, length = 100)
 	private String direccion;
 
-	@Column(name = "estado", nullable = false, length = 100)
+	@Column(name = "estado", nullable = false, length = 10)
 	private String estado;	
 	
 	public medico() {
