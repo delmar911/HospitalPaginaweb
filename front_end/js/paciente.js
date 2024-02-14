@@ -1,6 +1,6 @@
 //se almacena la url de la api
-let url="http://localhost:8080/api/v1/medico/";
-function listarMedico() {
+let url="http://localhost:8080/api/v1/paciente/";
+function listarPaciente() {
     $.ajax({
         url:url,
         type: "GET",
@@ -18,7 +18,7 @@ function listarMedico() {
                 let celdaSegundoNombre = document.createElement("td");
                 let celdaPrimerApellido = document.createElement("td");
                 let celdaSegundoApellido = document.createElement("td");
-                let celdaCelular = document.createElement("td");
+                let celdaTelefono = document.createElement("td");
                 let celdaCorreo = document.createElement("td");
                 let celdaDireccion = document.createElement("td"); 
                 let celdaEstado = document.createElement("td");
@@ -33,7 +33,7 @@ function listarMedico() {
                 celdaSegundoNombre.innerText = result[i]["segundo_nombre"];
                 celdaPrimerApellido.innerText = result[i]["primer_apellido"];
                 celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
-                celdaCelular.innerText = result[i]["Celular"];
+                celdaTelefono.innerText = result[i]["telefono"];
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
@@ -50,7 +50,7 @@ function listarMedico() {
                 trRegistro.appendChild(celdaSegundoNombre);
                 trRegistro.appendChild(celdaPrimerApellido);
                 trRegistro.appendChild(celdaSegundoApellido);
-                trRegistro.appendChild(celdaCelular);
+                trRegistro.appendChild(celdaTelefono);
                 trRegistro.appendChild(celdaCorreo);
                 trRegistro.appendChild(celdaDireccion);
                 trRegistro.appendChild(celdaEstado);
@@ -75,7 +75,7 @@ function registrarMedico() {
     let primer_apellido = document.getElementById("primer_apellido").value;
     let segundo_apellido = document.getElementById("segundo_apellido").value;
     let correo = document.getElementById("correo").value;
-    let Celular = document.getElementById("Celular").value;
+    let telefono = document.getElementById("telefono").value;
     let direccion = document.getElementById("direccion").value;
     let estado = document.getElementById("estado").value;
 
@@ -87,7 +87,7 @@ function registrarMedico() {
         "segundo_nombre": segundo_nombre,
         "primer_apellido": primer_apellido,
         "segundo_apellido": segundo_apellido,
-        "Celular": Celular,
+        "telefono": telefono,
         "correo_electronico": correo,
         "direccion": direccion,
         "estado": estado
