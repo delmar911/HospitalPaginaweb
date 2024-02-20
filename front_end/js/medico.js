@@ -26,19 +26,19 @@ function listarMedico() {
                 
                 //almacenamos en valor
                 
-                celdaId.innerText = result[i]["id"];
+                celdaId.innerText = result[i]["id_medico"];
                 celdaTipoDocumento.innerText= result[i]["tipo_documento"];
                 celdaNumeroDocumento.innerText = result[i]["numero_documento"];
                 celdaPrimerNombre.innerText = result[i]["primer_nombre"];
                 celdaSegundoNombre.innerText = result[i]["segundo_nombre"];
                 celdaPrimerApellido.innerText = result[i]["primer_apellido"];
                 celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
-                celdaCelular.innerText = result[i]["Celular"];
+                celdaCelular.innerText = result[i]["celular"];
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
-                celdaEditar.innerHTML = "<button onclick='editarmMedico("+result
-                [i]["id"]+")' class='btn btn-primary'>Editar</button>";
+                celdaEditar.innerHTML = "<button onclick='editarMedico("+result
+                [i]["id_medico"]+")' class='btn btn-primary'>Editar</button>";
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -68,27 +68,29 @@ function listarMedico() {
 //que es Cors
 function registrarMedico() {
 
+    
     let tipo_documento = document.getElementById("tipo_documento").value;
     let numero_documento = document.getElementById("numero_documento").value;
     let primer_nombre = document.getElementById("primer_nombre").value;
     let segundo_nombre = document.getElementById("segundo_nombre").value;
     let primer_apellido = document.getElementById("primer_apellido").value;
     let segundo_apellido = document.getElementById("segundo_apellido").value;
-    let correo = document.getElementById("correo").value;
-    let Celular = document.getElementById("Celular").value;
+    let correo_electronico = document.getElementById("correo_electronico").value;
+    let celular = document.getElementById("celular").value;
     let direccion = document.getElementById("direccion").value;
     let estado = document.getElementById("estado").value;
 
 
     let formData = {
+        
         "tipo_documento": tipo_documento,
         "numero_documento": numero_documento,
         "primer_nombre": primer_nombre,
         "segundo_nombre": segundo_nombre,
         "primer_apellido": primer_apellido,
         "segundo_apellido": segundo_apellido,
-        "Celular": Celular,
-        "correo_electronico": correo,
+        "celular": celular,
+        "correo_electronico": correo_electronico,
         "direccion": direccion,
         "estado": estado
     };

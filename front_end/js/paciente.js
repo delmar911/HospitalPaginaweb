@@ -26,7 +26,7 @@ function listarPaciente() {
                 
                 //almacenamos en valor
                 
-                celdaId.innerText = result[i]["id"];
+                celdaId.innerText = result[i]["id_"];
                 celdaTipoDocumento.innerText= result[i]["tipo_documento"];
                 celdaNumeroDocumento.innerText = result[i]["numero_documento"];
                 celdaPrimerNombre.innerText = result[i]["primer_nombre"];
