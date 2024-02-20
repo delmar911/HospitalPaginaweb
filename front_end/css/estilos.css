@@ -432,7 +432,37 @@
 .team-item:hover .team-social .btn {
     opacity: 1;
 }
+/** From (Formulario)**/
 
+.col-md-4{
+    margin-left: 140px;
+    margin-top: 40px;
 
+}
+.col-12{
+    margin-left: 140px;
+    margin-top: 40px;
+
+}
+.col-md-3{
+    margin-left: 140px;
+    margin-top: 40px;
+
+}
+.btn-primary{
+    margin-left: 20px;
+    
+
+}
+.registrarPacienteT{
+    font-family:'Roboto sans-serif ';
+    text-align: center;
+    margin-top: 30px;
+}
+.registrarMedicosT{
+    font-family:'Roboto sans-serif ';
+    text-align: center;
+    margin-top: 30px;
+}
 
 

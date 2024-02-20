@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HospitalWebApplication<hospitalWeb>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sena.hospitalWeb.HospitalWebApplication",
+            "projectName": "hospitalWeb",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
