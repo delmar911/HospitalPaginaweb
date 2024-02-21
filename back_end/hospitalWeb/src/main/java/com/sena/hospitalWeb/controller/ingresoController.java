@@ -24,9 +24,7 @@ public class ingresoController {
 	private IingresoService ingresoService;
 	
 	@PostMapping("/")
-	public ResponseEntity<Object> save(
-			@ModelAttribute("ingreso") ingreso ingreso
-			){
+	public ResponseEntity<Object> save(@ModelAttribute("ingreso") ingreso ingreso){
 		ingresoService.save(ingreso);
 		return new ResponseEntity<>(ingreso,HttpStatus.OK);
 	}

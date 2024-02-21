@@ -26,7 +26,8 @@ function listarPaciente() {
                 
                 //almacenamos en valor
                 
-                celdaId.innerText = result[i]["id"];
+<<<<<<< HEAD
+                celdaId.innerText = result[i]["id_"];
                 celdaTipoDocumento.innerText= result[i]["tipo_documento"];
                 celdaNumeroDocumento.innerText = result[i]["numero_documento"];
                 celdaPrimerNombre.innerText = result[i]["primer_nombre"];
@@ -37,6 +38,19 @@ function listarPaciente() {
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
+=======
+                celdaId.innerText = result[i]["celdaId"];
+                celdaTipoDocumento.innerText= result[i]["celdaTipoDocumento"];
+                celdaNumeroDocumento.innerText = result[i]["celdaNumeroDocumento"];
+                celdaPrimerNombre.innerText = result[i]["celdaPrimerNombre"];
+                celdaSegundoNombre.innerText = result[i]["celdaSegundoNombre"];
+                celdaPrimerApellido.innerText = result[i]["celdaPrimerApellido"];
+                celdaSegundoApellido.innerText = result[i]["celdaSegundoApellido"];
+                celdaTelefono.innerText = result[i]["celdaTelefono"];
+                celdaCorreo.innerText = result[i]["celdaCorreo"];
+                celdaDireccion.innerText = result[i]["celdaDireccion"];
+                celdaEstado.innerText = result[i]["celdaEstado"];
+>>>>>>> 959f5538935f618b145af89e1168ac1e6d2bbcff
                 celdaEditar.innerHTML = "<button onclick='editarmMedico("+result
                 [i]["id"]+")' class='btn btn-primary'>Editar</button>";
                 
@@ -66,18 +80,18 @@ function listarPaciente() {
     })
 }
 //que es Cors
-function registrarMedico() {
+function registrarPaciente() {
 
-    let tipo_documento = document.getElementById("tipo_documento").value;
-    let numero_documento = document.getElementById("numero_documento").value;
-    let primer_nombre = document.getElementById("primer_nombre").value;
-    let segundo_nombre = document.getElementById("segundo_nombre").value;
-    let primer_apellido = document.getElementById("primer_apellido").value;
-    let segundo_apellido = document.getElementById("segundo_apellido").value;
-    let correo = document.getElementById("correo").value;
-    let telefono = document.getElementById("telefono").value;
-    let direccion = document.getElementById("direccion").value;
-    let estado = document.getElementById("estado").value;
+    let tipo_documento = document.getElementById("Tipo_documento").value;
+    let numero_documento = document.getElementById("txtNumero_identificacion").value;
+    let primer_nombre = document.getElementById("txtPrimer_Nombre").value;
+    let segundo_nombre = document.getElementById("txtSegundo_Nombre").value;
+    let primer_apellido = document.getElementById("txtPrimer_Apellido").value;
+    let segundo_apellido = document.getElementById("txtSegundo_Apellido").value;
+    let correo = document.getElementById("txtCorreo_electronico").value;
+    let telefono = document.getElementById("txtNumero_Telefonico").value;
+    let direccion = document.getElementById("txtDireccion").value;
+    let estado = document.getElementById("Estado").value;
 
 
     let formData = {
@@ -93,47 +107,55 @@ function registrarMedico() {
         "estado": estado
     };
 
-    if (validarCampos()) {
+    if(validarCampos()){
         $.ajax({
-            url:url,
-            type: "POST",
-            data: formData,
-            success: function (result){
-                alert("se guardó correctamente");
-            },
-            error: function (error) {
-                alert("error al guardar".error)
-            }
+          url: url,
+          type: "POST",
+          data: formData,
+          success: function(reslt){
+            Swal.fire({
+              title: "Exelengte",
+              text: "su registro se guardo correctamente",
+              icon: "success"
+            });
+            window.location.href= "http://localhost:5500/view/listarClientes.html";
+          },
+          error: function(error){
+            alert("error al guardar".error);
+          }
         });
-    }
-    else{
-        Swal.fire(
-            'Error',
-            'Faltan campos por llenar!',
-            'error'
-          )
-    }
-    
-   
-}
-function validarCampos() {
-    let numero_documento = document.getElementById("numero_documento");
-    return validarNumeroDocumento(numero_documento);
-}
-function validarNumeroDocumento(cuadroNumero) {
-    
-    let valor = cuadroNumero.value;
-    let valido = true;
-    if (valor.length < 5 || valor.length > 11) {
-        valido = false
+      }else{
+       // alert("llena los campos correctamente")
+        Swal.fire({
+          title: "Error!",
+          text: "complete los campos correctamente",
+          icon: "error"
+        });
+      }
     }
 
-    if (valido) {
-        cuadroNumero.className = "form-control is-valid"
-    }
-    else{
-        cuadroNumero.className = "form-control is-invalid"
-    }
-    return valido;
-}
+    function validarNumeroIdentificacion(cuadroNumero){
+        var valor=cuadroNumero.value; 
+        var valido=true; 
+        if(valor.length<5 || valor.length>11){
+          valido=false
+        }
+        if (valido) {
+          //cuadro de texto cumple
+          //se modifica la clase del cuadro de textp
+          cuadroNumero.className="form-control is-valid";
+        }else{
+        //cuadro de texto no cumple 
+        cuadroNumero.className="form-control is-invalid";
+        }
+      return valido; 
+      }
+      function validarCampos(){
+        var numero_identificacion =document.getElementById("txtNumero_Identificacion"); 
+        return validarNumeroIdentificacion(numero_identificacion); 
+      }
+
+
+
+
 

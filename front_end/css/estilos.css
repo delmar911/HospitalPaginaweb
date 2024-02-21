@@ -432,6 +432,7 @@
 .team-item:hover .team-social .btn {
     opacity: 1;
 }
+<<<<<<< HEAD
 .nuestrosServicios{
     font-family:'Roboto sans-serif ';
     text-align: center;
@@ -446,6 +447,30 @@
    
 
 
+=======
+/** From (Formulario)**/
+
+.col-md-4{
+    margin-left: 140px;
+    margin-top: 40px;
+
+}
+.col-12{
+    margin-left: 140px;
+    margin-top: 40px;
+
+}
+.col-md-3{
+    margin-left: 140px;
+    margin-top: 40px;
+
+}
+.btn-primary{
+    margin-left: 20px;
+    
+
+}
+>>>>>>> f6cd398108803fdfdc9d3ceacf7eec15c3dd6196
 .registrarPacienteT{
     font-family:'Roboto sans-serif ';
     text-align: center;
@@ -456,7 +481,10 @@
     text-align: center;
     margin-top: 30px;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f6cd398108803fdfdc9d3ceacf7eec15c3dd6196
 
 
