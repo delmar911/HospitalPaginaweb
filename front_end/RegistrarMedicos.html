@@ -82,7 +82,7 @@
                         <a href="medicos.html" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Medicos</a>
                         <div class="dropdown-menu bg-light m-0">
                             <a href="RegistrarMedicos.html" class="dropdown-item">Registro</a>
-                            <a href="listaMedicos.html" class="dropdown-item">Lista medicos</a>
+                            <a href="listaMedicos.html" class="dropdown-item">Lista Medicos</a>
                         </div>
                     </div>
                         <a href="contacto.html" class="nav-item nav-link">Contacto</a>
@@ -98,48 +98,102 @@
         </div>
     </div>
     <!-- Navbar End -->
-    <h1 class="nuestrosServicios">Nuestros servicios</h1>
-    <div class="row">
-        <div class="col col-12 col-md-3 col-xl-3">
-            <div class="card" style="width: 18rem;">
-                <img src="img/consulta.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Consultas medicas</h5>
-                  <p class="card-text"> Consulta con médicos especialistas en diferentes áreas como medicina interna, pediatría, cardiología, pediatria, entre otras.</p>
-                </div>
-              </div>
+    <h1 class="registrarMedicosT">Registrar medicos</h1>
 
+    <form class="row g-3 needs-validation" novalidate>
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Id medico</label>
+          <input type="number" class="form-control" id="validationCustom01" value="" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
-        <div class=" col col-12 col-md-3 col-xl-3">
-            <div class="card" style="width: 18rem;">
-                <img src="img/cirugia.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Cirugias</h5>
-                  <p class="card-text"> Intervenciones quirúrgicas de diversa complejidad.</p>
-                </div>
-              </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Tipo Documento</label>
+          <input type="text" class="form-control" id="validationCustom02" value="" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
         </div>
-        <div class=" col col-12 col-md-3 col-xl-3">
-            <div class="card" style="width: 18rem;">
-                <img src="img/hospitalizacion.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Hospitalizacion</h5>
-                  <p class="card-text">  Internamiento en el hospital para recibir tratamiento médico o quirúrgico.</p>
-                </div>
-              </div>
-        </div>
-        <!-- <div class=" col col-12 col-md-3 ">
-            <div class="card" style= "width: 18rem;"  >
-                <img src="img/terapia.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Terapia</h5>
-                  <p class="card-text">Fisioterapia, rehabilitación, terapia ocupacional, etc..</p>
-                </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Numero Documento</label>
+            <input type="number" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
             </div>
-        </div> -->
-    </div>
+          </div><div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Primer Nombre</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div><div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Segundo Nombre</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Primer apellido</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div><div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div><div class="col-md-4">
+            <label for="validationCustom02" class="form-label">celular</label>
+            <input type="number" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div><div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Correo electronico</label>
+            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Direccion</label>
+          <input type="text" class="form-control" id="validationCustom02" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="validationCustom04" class="form-label">Estado</label>
+          <select class="form-select" id="validationCustom04" required>
+            <option selected disabled value="">¿en que estado se encuentra?...</option>
+            <option value="1">Activo</option>
+            <option value="2">inactivo</option>
 
-   
-     
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid state.
+          </div>
+        </div>
+        
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+            <label class="form-check-label" for="invalidCheck">
+                Acepta todos los terminos y condiciones.
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+      </form>
 </body>
 </html>
