@@ -1,14 +1,13 @@
-package service;
+package com.sena.hospital2.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sena.hospital2.interfaceService.ImedicoService;
+import com.sena.hospital2.interfaces.Imedico;
 import com.sena.hospital2.model.medico;
-
-import interfaceService.ImedicoService;
-import interfaces.Imedico;
 
 public class medicoService implements ImedicoService {
 

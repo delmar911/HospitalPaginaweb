@@ -1,4 +1,4 @@
-package interfaces;
+package com.sena.hospital2.interfaces;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,14 +1,13 @@
-package service;
+package com.sena.hospital2.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sena.hospital2.interfaceService.IpacienteService;
+import com.sena.hospital2.interfaces.Ipaciente;
 import com.sena.hospital2.model.paciente;
-
-import interfaceService.IpacienteService;
-import interfaces.Ipaciente;
 
 public class pacienteService implements IpacienteService{
 	@Autowired
