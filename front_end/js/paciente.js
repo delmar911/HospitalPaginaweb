@@ -66,7 +66,7 @@ function listarPaciente() {
     })
 }
 //que es Cors
-function registrarPaciente() {
+function RegistrarPaciente() {
 
     let tipo_documento = document.getElementById("Tipo_documento").value;
     let numero_documento = document.getElementById("txtNumero_identificacion").value;
