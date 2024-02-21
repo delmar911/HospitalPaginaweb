@@ -1,4 +1,4 @@
-package com.sena.hospitalWeb.controller;
+package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sena.hospitalWeb.interfaceService.IingresoService;
-import com.sena.hospitalWeb.model.ingreso;
+import com.sena.hospital2.model.ingreso;
+
+import interfaceService.IingresoService;
+
 
 @RequestMapping("/api/v1/ingreso")
 @RestController
@@ -24,7 +26,9 @@ public class ingresoController {
 	private IingresoService ingresoService;
 	
 	@PostMapping("/")
-	public ResponseEntity<Object> save(@ModelAttribute("ingreso") ingreso ingreso){
+	public ResponseEntity<Object> save(
+			@ModelAttribute("ingreso") ingreso ingreso
+			){
 		ingresoService.save(ingreso);
 		return new ResponseEntity<>(ingreso,HttpStatus.OK);
 	}
@@ -53,8 +57,8 @@ public class ingresoController {
 			if (ingreso != null) {
 				ingreso.setHabitacion(ingresoUpdate.getHabitacion());
 				ingreso.setCama(ingresoUpdate.getCama());
-				ingreso.setId_paciente(ingresoUpdate.getId_paciente());
-				ingreso.setId_medico(ingresoUpdate.getId_medico());
+				ingreso.setPaciente(ingresoUpdate.getPaciente());
+				ingreso.setMedico(ingresoUpdate.getMedico());
 				ingreso.setFecha_ingreso(ingresoUpdate.getFecha_ingreso());
 				ingreso.setFecha_salida(ingresoUpdate.getFecha_salida());
 				ingreso.setEstado(ingresoUpdate.getEstado());
@@ -68,3 +72,4 @@ public class ingresoController {
 				
 			}
 }
+

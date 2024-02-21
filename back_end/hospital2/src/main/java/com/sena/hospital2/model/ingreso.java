@@ -1,16 +1,14 @@
-package com.sena.hospitalWeb.model;
+package com.sena.hospital2.model;
 
 import java.time.LocalDateTime;
 
-
-import jakarta.persistence.Id;
-
+import org.springframework.data.annotation.Id;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
-@Entity(name = "ingreso")
 public class ingreso {
 	//- id (UIID autogenerado)
 	//- Habitación (Obligatorio).
@@ -33,12 +31,6 @@ public class ingreso {
     @Column(name = "cama", nullable = false, length = 10)
    	private String cama;
     
-    @Column(name = "id_paciente", nullable = false, length = 36)
-   	private String id_paciente;
-    
-    @Column(name = "id_medico", nullable = false, length = 36)
-   	private String id_medico;
-    
     @Column(name = "fecha_ingreso", nullable = false, length = 40)
    	private LocalDateTime fecha_ingreso;
     
@@ -48,6 +40,23 @@ public class ingreso {
     @Column(name = "estado", nullable = false, length = 10)
    	private String estado;
     
+    
+    
+    
+    
+    @ManyToOne
+	@JoinColumn(name = "id_paciente")
+	private paciente paciente;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_medico")
+	private medico medico;
+    
+
+    
+	
+	
+	
     public ingreso() {
 		super();
 	}
@@ -62,8 +71,6 @@ public class ingreso {
 		this.id_ingreso = id_ingreso;
 		this.habitacion = habitacion;
 		this.cama = cama;
-		this.id_paciente = id_paciente;
-		this.id_medico = id_medico;
 		this.fecha_ingreso = fecha_ingreso;
 		this.fecha_salida = fecha_salida;
 		this.estado = estado;
@@ -94,20 +101,20 @@ public class ingreso {
 		this.cama = cama;
 	}
 
-	public String getId_paciente() {
-		return id_paciente;
+	public paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setId_paciente(String id_paciente) {
-		this.id_paciente = id_paciente;
+	public void setPaciente(paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public String getId_medico() {
-		return id_medico;
+	public medico getMedico() {
+		return medico;
 	}
 
-	public void setId_medico(String id_medico) {
-		this.id_medico = id_medico;
+	public void setMedico(medico medico) {
+		this.medico = medico;
 	}
 
 	public LocalDateTime getFecha_ingreso() {
