@@ -26,6 +26,19 @@ function listarPaciente() {
                 
                 //almacenamos en valor
                 
+<<<<<<< HEAD
+                celdaId.innerText = result[i]["id_"];
+                celdaTipoDocumento.innerText= result[i]["tipo_documento"];
+                celdaNumeroDocumento.innerText = result[i]["numero_documento"];
+                celdaPrimerNombre.innerText = result[i]["primer_nombre"];
+                celdaSegundoNombre.innerText = result[i]["segundo_nombre"];
+                celdaPrimerApellido.innerText = result[i]["primer_apellido"];
+                celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
+                celdaTelefono.innerText = result[i]["telefono"];
+                celdaCorreo.innerText = result[i]["correo_electronico"];
+                celdaDireccion.innerText = result[i]["direccion"];
+                celdaEstado.innerText = result[i]["estado"];
+=======
                 celdaId.innerText = result[i]["celdaId"];
                 celdaTipoDocumento.innerText= result[i]["celdaTipoDocumento"];
                 celdaNumeroDocumento.innerText = result[i]["celdaNumeroDocumento"];
@@ -37,6 +50,7 @@ function listarPaciente() {
                 celdaCorreo.innerText = result[i]["celdaCorreo"];
                 celdaDireccion.innerText = result[i]["celdaDireccion"];
                 celdaEstado.innerText = result[i]["celdaEstado"];
+>>>>>>> 959f5538935f618b145af89e1168ac1e6d2bbcff
                 celdaEditar.innerHTML = "<button onclick='editarmMedico("+result
                 [i]["id"]+")' class='btn btn-primary'>Editar</button>";
                 
