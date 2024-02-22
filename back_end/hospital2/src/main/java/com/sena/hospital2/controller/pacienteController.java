@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sena.hospital2.interfaceService.IpacienteService;
 import com.sena.hospital2.model.paciente;
 
+
 @RequestMapping("/api/v1/paciente")
 @RestController
 @CrossOrigin
+
+
 public class pacienteController {
 
 	@Autowired
@@ -33,26 +36,26 @@ public class pacienteController {
 	}
 	@GetMapping("/")
 	public ResponseEntity<Object> findAll(){
-		var Listapacientes=pacienteService.findAll();
-		return new ResponseEntity<>(Listapacientes, HttpStatus.OK);
+		var listaPaciente=pacienteService.findAll();
+		return new ResponseEntity<>(listaPaciente, HttpStatus.OK);
 	}
 	
 	//@PathVariable : Recibe una variable por enlace
-		@GetMapping("/{id_paciente}")
-		public ResponseEntity<Object> findOne(@PathVariable String id_paciente){
-			var paciente=pacienteService.findOne(id_paciente);
+		@GetMapping("/{id}")
+		public ResponseEntity<Object> findOne(@PathVariable String id){
+			var paciente=pacienteService.findOne(id);
 			return new ResponseEntity<>(paciente,HttpStatus.OK);
 			
 		}
 		
-		@DeleteMapping("/{id_paciente}")
-		public ResponseEntity<Object> delete(@PathVariable String id_paciente){
-			 pacienteService.delete(id_paciente);
+		@DeleteMapping("/{id}")
+		public ResponseEntity<Object> delete(@PathVariable String id){
+			 pacienteService.delete(id);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
 		}
-		@PutMapping("/{id_paciente}")
-		public ResponseEntity<Object> update(@PathVariable String id_paciente, @ModelAttribute("paciente")paciente pacienteUpdate){
-			var paciente = pacienteService.findOne(id_paciente).get();
+		@PutMapping("/{id}")
+		public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("paciente")paciente pacienteUpdate){
+			var paciente = pacienteService.findOne(id).get();
 			if (paciente != null) {
 				paciente.setTipo_documento(pacienteUpdate.getTipo_documento());
 				paciente.setNumero_documento(pacienteUpdate.getNumero_documento());

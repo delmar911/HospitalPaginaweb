@@ -32,26 +32,26 @@ public class medicoController {
 	}
 	@GetMapping("/")
 	public ResponseEntity<Object> findAll(){
-		var Listamedicos=medicoService.findAll();
-		return new ResponseEntity<>(Listamedicos, HttpStatus.OK);
+		var ListaMedico=medicoService.findAll();
+		return new ResponseEntity<>(ListaMedico, HttpStatus.OK);
 	}
 	
 	//@PathVariable : Recibe una variable por enlace
-		@GetMapping("/{id_medico}")
-		public ResponseEntity<Object> findOne(@PathVariable String id_medico){
-			var medico=medicoService.findOne(id_medico);
+		@GetMapping("/{id}")
+		public ResponseEntity<Object> findOne(@PathVariable String id){
+			var medico=medicoService.findOne(id);
 			return new ResponseEntity<>(medico,HttpStatus.OK);
 			
 		}
 		
-		@DeleteMapping("/{id_medico}")
-		public ResponseEntity<Object> delete(@PathVariable String id_medico){
-			 medicoService.delete(id_medico);
+		@DeleteMapping("/{id}")
+		public ResponseEntity<Object> delete(@PathVariable String id){
+			 medicoService.delete(id);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
 		}
-		@PutMapping("/{id_medico}")
-		public ResponseEntity<Object> update(@PathVariable String id_medico, @ModelAttribute("medico")medico medicoUpdate){
-			var medico = medicoService.findOne(id_medico).get();
+		@PutMapping("/{id}")
+		public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("medico")medico medicoUpdate){
+			var medico = medicoService.findOne(id).get();
 			if (medico != null) {
 				medico.setTipo_documento(medicoUpdate.getTipo_documento());
 				medico.setNumero_documento(medicoUpdate.getNumero_documento());
@@ -62,6 +62,7 @@ public class medicoController {
 				medico.setCelular(medicoUpdate.getCelular());
 				medico.setCorreo_electronico(medicoUpdate.getCorreo_electronico());
 				medico.setDireccion(medicoUpdate.getDireccion());
+				medico.setEstado(medicoUpdate.getEstado());
 			medicoService.save(medico);
 			return new ResponseEntity<>(medico, HttpStatus.OK);
 			

@@ -75,11 +75,11 @@ public class paciente {
         this.estado = estado;
 	}
 
-	public String getId() {
+	public String getId_paciente() {
 		return id_paciente;
 	}
 
-	public void setId(String id_paciente) {
+	public void setId_paciente(String id_paciente) {
 		this.id_paciente = id_paciente;
 	}
 

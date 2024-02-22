@@ -1,9 +1,8 @@
 package com.sena.hospital2.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sena.hospital2.interfaceService.IingresoService;
 import com.sena.hospital2.model.ingreso;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RequestMapping("/api/v1/ingreso")
 @RestController
 @CrossOrigin
+
 public class ingresoController {
 	
 	@Autowired
@@ -34,31 +35,29 @@ public class ingresoController {
 	}
 	@GetMapping("/")
 	public ResponseEntity<Object> findAll(){
-		var Listaingresos=ingresoService.findAll();
-		return new ResponseEntity<>(Listaingresos, HttpStatus.OK);
+		var ListaIngreso=ingresoService.findAll();
+		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
 	}
 	
 	//@PathVariable : Recibe una variable por enlace
-		@GetMapping("/{id_ingreso}")
-		public ResponseEntity<Object> findOne(@PathVariable String id_ingreso){
-			var ingreso=ingresoService.findOne(id_ingreso);
+		@GetMapping("/{id}")
+		public ResponseEntity<Object> findOne(@PathVariable String id){
+			var ingreso=ingresoService.findOne(id);
 			return new ResponseEntity<>(ingreso,HttpStatus.OK);
 			
 		}
 		
-		@DeleteMapping("/{id_ingreso}")
-		public ResponseEntity<Object> delete(@PathVariable String id_ingreso){
-			 ingresoService.delete(id_ingreso);
+		@DeleteMapping("/{id}")
+		public ResponseEntity<Object> delete(@PathVariable String id){
+			 ingresoService.delete(id);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
 		}
-		@PutMapping("/{id_ingreso}")
-		public ResponseEntity<Object> update(@PathVariable String id_ingreso, @ModelAttribute("ingreso")ingreso ingresoUpdate){
-			var ingreso = ingresoService.findOne(id_ingreso).get();
+		@PutMapping("/{id}")
+		public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("ingreso")ingreso ingresoUpdate){
+			var ingreso = ingresoService.findOne(id).get();
 			if (ingreso != null) {
 				ingreso.setHabitacion(ingresoUpdate.getHabitacion());
 				ingreso.setCama(ingresoUpdate.getCama());
-				ingreso.setPaciente(ingresoUpdate.getPaciente());
-				ingreso.setMedico(ingresoUpdate.getMedico());
 				ingreso.setFecha_ingreso(ingresoUpdate.getFecha_ingreso());
 				ingreso.setFecha_salida(ingresoUpdate.getFecha_salida());
 				ingreso.setEstado(ingresoUpdate.getEstado());
