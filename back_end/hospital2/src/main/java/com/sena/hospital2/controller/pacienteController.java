@@ -67,6 +67,7 @@ public class pacienteController {
 				paciente.setCorreo_electronico(pacienteUpdate.getCorreo_electronico());
 				paciente.setNombrePersonaContacto(pacienteUpdate.getNombrePersonaContacto());
 				paciente.setCelularPersonaContacto(pacienteUpdate.getCelularPersonaContacto());
+				paciente.setEstado(pacienteUpdate.getEstado());
 				pacienteService.save(paciente);
 			return new ResponseEntity<>(paciente, HttpStatus.OK);
 			

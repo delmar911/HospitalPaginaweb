@@ -43,6 +43,9 @@ public class paciente {
 
     @Column(name = "celular_persona_contacto", nullable = false, length = 100)
 	private String celular_persona_contacto;
+    
+    @Column(name = "estado", nullable = false, length = 10)
+	private String estado;
 
 
 
@@ -55,7 +58,7 @@ public class paciente {
 	public paciente(String id_paciente, String tipo_documento, String numero_documento, 
 					String primer_nombre, String segundo_nombre, String primer_apellido,
 					String segundo_apellido, String celular, String correo_electronico, 
-                    String nombre_persona_contacto, String celular_persona_contacto)
+                    String nombre_persona_contacto, String celular_persona_contacto, String estado)
 	{
 		super();
 		
@@ -70,6 +73,7 @@ public class paciente {
 		this.correo_electronico = correo_electronico;
         this.nombre_persona_contacto = nombre_persona_contacto;
         this.celular_persona_contacto = celular_persona_contacto;
+        this.estado = estado;
 	}
 
 	public String getId_paciente() {
@@ -156,6 +160,13 @@ public class paciente {
 
 	public void setCelularPersonaContacto(String celular_persona_contacto) {
 		this.celular_persona_contacto = celular_persona_contacto;
-	}  
+	} 
+	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }
 
