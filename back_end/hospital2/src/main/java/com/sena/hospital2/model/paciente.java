@@ -26,7 +26,7 @@ public class paciente {
 	@Column(name = "segundo_nombre", nullable = true, length = 100)
 	private String segundo_nombre;
 	
-	@Column(name = "primer_apellido", nullable = true, length = 100)
+	@Column(name = "primer_apellido", nullable = false, length = 100)
 	private String primer_apellido;
 	
 	@Column(name = "segundo_apellido", nullable = true, length = 100)
@@ -34,6 +34,9 @@ public class paciente {
 	
 	@Column(name = "celular", nullable = false, length = 50)
 	private String celular;
+	
+	@Column(name = "direccion", nullable = false, length = 100)
+	private String direccion;
 
 	@Column(name = "correo_electronico", nullable = false, length = 255)
 	private String correo_electronico;
@@ -57,7 +60,7 @@ public class paciente {
 
 	public paciente(String id_paciente, String tipo_documento, String numero_documento, 
 					String primer_nombre, String segundo_nombre, String primer_apellido,
-					String segundo_apellido, String celular, String correo_electronico, 
+					String segundo_apellido, String celular, String direccion, String correo_electronico, 
                     String nombre_persona_contacto, String celular_persona_contacto, String estado)
 	{
 		super();
@@ -70,6 +73,7 @@ public class paciente {
 		this.primer_apellido = primer_apellido;
 		this.segundo_apellido = segundo_apellido;
 		this.celular = celular;
+		this.direccion = direccion;
 		this.correo_electronico = correo_electronico;
         this.nombre_persona_contacto = nombre_persona_contacto;
         this.celular_persona_contacto = celular_persona_contacto;
@@ -131,7 +135,7 @@ public class paciente {
 	public void setSegundo_apellido(String segundo_apellido) {
 		this.segundo_apellido = segundo_apellido;
 	}
-
+	
 	public String getCelular() {
 		return celular;
 	}
@@ -140,6 +144,16 @@ public class paciente {
 		this.celular = celular;
 	}
 
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	
+	
 	public String getCorreo_electronico() {
 		return correo_electronico;
 	}

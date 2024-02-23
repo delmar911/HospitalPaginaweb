@@ -64,6 +64,7 @@ public class pacienteController {
 				paciente.setPrimer_apellido(pacienteUpdate.getPrimer_apellido());
 				paciente.setSegundo_apellido(pacienteUpdate.getSegundo_apellido());
 				paciente.setCelular(pacienteUpdate.getCelular());
+				paciente.setDireccion(pacienteUpdate.getDireccion());
 				paciente.setCorreo_electronico(pacienteUpdate.getCorreo_electronico());
 				paciente.setNombrePersonaContacto(pacienteUpdate.getNombrePersonaContacto());
 				paciente.setCelularPersonaContacto(pacienteUpdate.getCelularPersonaContacto());
