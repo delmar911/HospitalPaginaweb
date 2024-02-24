@@ -84,7 +84,7 @@
                             <a href="RegistrarMedicos.html" class="dropdown-item">Registro</a>
                             <a href="listaMedicos.html" class="dropdown-item">Lista Medicos</a>
                         </div>
-                    </div>
+                   
                         <a href="contacto.html" class="nav-item nav-link">Contacto</a>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
@@ -102,98 +102,76 @@
 
     <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">Id medico</label>
-          <input type="number" class="form-control" id="validationCustom01" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <label for="txtid_medico" class="form-label">Id medico</label>
+          <input type="number" class="form-control" name="txtid_medico" id="txtid_medico"  onfocusout="validartxtIdMedico(this);">
         </div>
-        <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">Tipo Documento</label>
-          <input type="text" class="form-control" id="validationCustom02" value="" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-        </div>
-        <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Numero Documento</label>
-            <input type="number" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div><div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Primer Nombre</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div><div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Segundo Nombre</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-          <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Primer apellido</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div><div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Segundo apellido</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div><div class="col-md-4">
-            <label for="validationCustom02" class="form-label">celular</label>
-            <input type="number" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div><div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Correo electronico</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-        <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">Direccion</label>
-          <input type="text" class="form-control" id="validationCustom02" required>
-          <div class="invalid-feedback">
-            Please provide a valid city.
-          </div>
-        </div>
-        <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">Estado</label>
-          <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">¿en que estado se encuentra?...</option>
-            <option value="1">Activo</option>
-            <option value="2">inactivo</option>
 
-            </option>
+        <div class="col-md-4">
+          <label for="tipo_documento" class="form-label">Tipo identificacion</label>
+          <select class="form-select" id="tipo_documento" focusout="validarTipo_documento(this);">
+              <option selected disabled value="">Selecciona una Opcion</option>
+              <option value="RC">Registro Civil</option>
+              <option value="TI">Tarjeta de Identidad</option>
+              <option value="CC">Cedula de Ciudadanía</option>
+              <option value="CE">Cedula de Extranjería</option>
           </select>
-          <div class="invalid-feedback">
-            Please select a valid state.
+        </div>
+
+         <div class="col-md-4">
+            <label for="txtnumero_documento" class="form-label">Numero Documento</label>
+            <input type="number" class="form-control" name="txtnumero_documento" id="txtnumero_documento"  step="1" onfocusout="validarNumeroIdentificacion(this);">
           </div>
+
+          <div class="col-md-4">
+            <label for="txtprimer_nombre" class="form-label">Primer Nombre</label>
+            <input type="text" class="form-control"  name="txtprimer_nombre" id="txtprimer_nombre"  onfocusout="validartxtPrimerNombre(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="txtsegundo_nombre" class="form-label">Segundo Nombre</label>
+            <input type="text" class="form-control" name="txtsegundo_nombre" id="txtsegundo_nombre"  onfocusout="validartxtSegundoNombre(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="txtprimer_apellido" class="form-label">Primer apellido</label>
+            <input type="text" class="form-control" name="txtprimer_apellido" id="txtprimer_apellido"  onfocusout="validartxtPrimerApellido(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="txtsegundo_apellido" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" name="txtsegundo_apellido" id="txtsegundo_apellido"  onfocusout="validartxtSegundoApellido(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="txtcelular" class="form-label">Telefono</label>
+            <input type="number" class="form-control" name="txtcelular" id="txtcelular"  onfocusout="validartxtNumeroTelefonico(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="txtcorreo_electronico" class="form-label">Correo electronico</label>
+            <input type="text" class="form-control" name="txtcorreo_electronico" id="txtcorreo_electronico" onfocusout="validartxtCorreoelectronico(this);">
+          </div>
+
+          <div class="col-md-4">
+            <label for="estado" class="form-label">Estado</label>
+             <select name="estado" id="estado" class="form-select"  focusout="validarEstado(this);">
+                <option selected disabled value="">¿en que estado se encuentrnaa?...</option>
+                <option value="1">Activo</option>
+                <option value="2">inactivo</option>
+            </select>
         </div>
         
         <div class="col-12">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-            <label class="form-check-label" for="invalidCheck">
-                Acepta todos los terminos y condiciones.
-            </label>
-            <div class="invalid-feedback">
-              You must agree before submitting.
-            </div>
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" onfocusout="validartxtPrimerNombre(this);">
+              <label class="form-check-label"  for="invalidCheck">
+                  Acepta todos los terminos y condiciones.
+              </label>
           </div>
-        </div>
-        <div class="col-12">
+      </div>
+      <div class="col-12">
           <button class="btn btn-primary" type="submit">Registrar</button>
-        </div>
+      </div>
       </form>
 </body>
 </html>

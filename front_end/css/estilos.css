@@ -432,6 +432,8 @@
 .team-item:hover .team-social .btn {
     opacity: 1;
 }
+
+/** nabar servicio**/
 .nuestrosServicios{
     font-family:'Roboto sans-serif ';
     text-align: center;
@@ -439,13 +441,17 @@
 }
 .card{
     margin-left: 170px;
-    width: 20px;
-    height: 60px;
-    margin-top: 50px;
+    width: 300px;
+    height: 450px;
+    margin-block-end: 20px;
+    background-color: #3368c6;
+    color: #EEEEEE;
+    font-family:'Roboto sans-serif ';
+    text-align: center;
     }
-   
-/** From (Formulario)**/
+/** nabar servicio**/   
 
+/** From (Formulario)**/
 .col-md-4{
     margin-left: 140px;
     margin-top: 40px;

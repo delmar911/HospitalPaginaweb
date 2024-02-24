@@ -98,12 +98,12 @@
         <!-- from Star(fromulario inicio) -->
         <form class="row g-3 needs-validation" novalidate>
             <div class="col-md-4">
-                <label for="txtId_Paciente" class="form-label">Id pacienete</label>
-                <input type="number" class="form-control" name="txtId_Paciente" id="txtId_Paciente"  onfocusout="validartxtIdPaciente(this);">
+                <label for="txtid_Paciente" class="form-label">Id pacienete</label>
+                <input type="number" class="form-control" name="txtid_Paciente" id="txtid_Paciente"  onfocusout="validartxtIdPaciente(this);">
             </div>
             <div class="col-md-4">
-                <label for="Tipo_documento" class="form-label">Tipo identificacion</label>
-                <select class="form-select" id="Tipo_documento" focusout="validarTipo_documento(this);">
+                <label for="tipo_documento" class="form-label">Tipo identificacion</label>
+                <select class="form-select" id="tipo_documento" focusout="validarTipo_documento(this);">
                     <option selected disabled value="">Selecciona una Opcion</option>
                     <option value="RC">Registro Civil</option>
                     <option value="TI">Tarjeta de Identidad</option>
@@ -112,48 +112,48 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="txtNumero_identificacion" class="form-label">Numero Documento</label>
-                <input type="number" class="form-control" name="txtNumero_identificacion" id="txtNumero_identificacion" step="1" onfocusout="validarNumeroIdentificacion(this);">
+                <label for="txtnumero_documento" class="form-label">Numero Documento</label>
+                <input type="number" class="form-control" name="txtnumero_documento" id="txtnumero_documento" step="1" onfocusout="validarNumeroIdentificacion(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtPrimer_Nombre" class="form-label">Primer Nombre</label>
-                <input type="text" class="form-control" name="txtPrimer_Nombre" id="txtPrimer_Nombre"  onfocusout="validartxtPrimerNombre(this);">
+                <label for="txtprimer_nombre" class="form-label">Primer Nombre</label>
+                <input type="text" class="form-control" name="txtprimer_nombre" id="txtprimer_nombre"  onfocusout="validartxtPrimerNombre(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtSegundo_Nombre" class="form-label">Segundo Nombre</label>
-                <input type="text" class="form-control" name="txtSegundo_Nombre" id="txtSegundo_Nombre"  onfocusout="validartxtSegundoNombre(this);">
+                <label for="txtsegundo_nombre" class="form-label">Segundo Nombre</label>
+                <input type="text" class="form-control" name="txtsegundo_nombre" id="txtsegundo_nombre"  onfocusout="validartxtSegundoNombre(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtPrimer_Apellido" class="form-label">Primer apellido</label>
-                <input type="text" class="form-control" name="txtPrimer_Apellido" id="txtPrimer_Apellido" onfocusout="validartxtPrimerApellido(this);">
+                <label for="txtprimer_apellido" class="form-label">Primer apellido</label>
+                <input type="text" class="form-control" name="txtprimer_apellido" id="txtprimer_apellido" onfocusout="validartxtPrimerApellido(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtSegundo_Apellido" class="form-label">Segundo apellido</label>
-                <input type="text" class="form-control" name="txtSegundo_Apellido" id="txtSegundo_Apellido" onfocusout="validartxtSegundoApellido(this);">
+                <label for="txtsegundo_apellido" class="form-label">Segundo apellido</label>
+                <input type="text" class="form-control" name="txtsegundo_apellido" id="txtsegundo_apellido" onfocusout="validartxtSegundoApellido(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtNumero_Telefonico" class="form-label">Nuemro Telefonico</label>
-                <input type="number" class="form-control" name="txtNumero_Telefonico" id="txtNumero_Telefonico"  onfocusout="validartxtNumeroTelefonico(this);">
+                <label for="txtcelular" class="form-label">Nuemro Telefonico</label>
+                <input type="number" class="form-control" name="txtcelular" id="txtcelular"  onfocusout="validartxtNumeroTelefonico(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtCorreo_electronico" class="form-label">Correo electronico</label>
-                <input type="number" class="form-control" name="txtCorreo_electronico" id="txtCorreo_electronico"  onfocusout="validartxtCorreoelectronico(this);">
+                <label for="txtcorreo_electronico" class="form-label">Correo electronico</label>
+                <input type="number" class="form-control" name="txtcorreo_electronico" id="txtcorreo_electronico"  onfocusout="validartxtCorreoelectronico(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtDireccion" class="form-label">Correo electronico</label>
+                <label for="txtDireccion" class="form-label">Direccion</label>
                 <input type="number" class="form-control" name="txtDireccion" id="txtDireccion"  onfocusout="validartxtDireccion(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtNombre_Acudiente" class="form-label">Nombre del Acudiente</label>
-                <input type="text" class="form-control" name="txtNombre_Acudiente" id="txtNombre_Acudiente" onfocusout="validartxtNombreAcudiente(this);">
+                <label for="txtnombre_persona_contacto" class="form-label">Nombre del Acudiente</label>
+                <input type="text" class="form-control" name="txtnombre_persona_contacto" id="txtnombre_persona_contacto" onfocusout="validartxtNombreAcudiente(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtTelefono_Acudiente" class="form-label">celular del Acudiente</label>
-                <input type="text" class="form-control" name="txtTelefono_Acudiente" id="txtTelefono_Acudiente" onfocusout="validartxtTelefonoAcudiente(this);">
+                <label for="txtcelular_persona_contacto" class="form-label">celular del Acudiente</label>
+                <input type="text" class="form-control" name="txtcelular_persona_contacto" id="txtcelular_persona_contacto" onfocusout="validartxtTelefonoAcudiente(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtEstado" class="form-label">Estado</label>
-                 <select name="" id="Estado" class="form-select"  focusout="validarEstado(this);">
+                <label for="estado" class="form-label">Estado</label>
+                 <select name="estado" id="estado" class="form-select"  focusout="validarEstado(this);">
                     <option selected disabled value="">¿en que estado se encuentrnaa?...</option>
                     <option value="1">Activo</option>
                     <option value="2">inactivo</option>
