@@ -6,8 +6,8 @@ function listarMedico() {
         type: "GET",
         success: function(result){//success: funcion que se ejecuta cusndo la peticion tiene exito
             console.log(result);
-            let cuerpoTabla = document.getElementById("cuerpoTabla");
-            cuerpoTabla.innerHTML="";
+            let curpoTablaMedico = document.getElementById("curpoTablaMedico");
+            curpoTablaMedico.innerHTML="";
             for (let i = 0; i < result.length; i++) {
                //se crea una etiqueta tr por cada registro
                 let trRegistro = document.createElement("tr");//fila por cada registro de la tabla
@@ -53,7 +53,7 @@ function listarMedico() {
                 trRegistro.appendChild(celdaEstado);
                 trRegistro.appendChild(celdaEditar);
 
-                cuerpoTabla.appendChild(trRegistro);//se traen todos los registros
+                curpoTablaMedico.appendChild(trRegistro);//se traen todos los registros
 
             }
         },
@@ -64,7 +64,6 @@ function listarMedico() {
 }
 //que es Cors
 function registrarMedico() {
-
     
     let tipo_documento = document.getElementById("tipo_documento").value;
     let numero_documento = document.getElementById("numero_documento").value;
@@ -75,7 +74,6 @@ function registrarMedico() {
     let correo_electronico = document.getElementById("correo_electronico").value;
     let celular = document.getElementById("celular").value;
     let estado = document.getElementById("estado").value;
-
 
     let formData = {
         

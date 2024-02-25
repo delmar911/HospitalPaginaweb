@@ -3,7 +3,7 @@
  <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Registro Pacientes</title>
         <meta charset="UTF-8">
         
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -75,10 +75,17 @@
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Medicos</a>
+                                <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Medicos</a>
                                 <div class="dropdown-menu bg-light m-0">
-                                    <a href="RegistrarMedicos.html" class="dropdown-item">Registro</a>
+                                    <a href="medicoRegistro.html" class="dropdown-item">Registro</a>
                                     <a href="ListarMedicos.html" class="dropdown-item">Lista de medicos</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Ingreso</a>
+                                <div class="dropdown-menu bg-light m-0">
+                                    <a href="ingresoRegistro.html" class="dropdown-item">Registro de Ingresos</a>
+                                    <a href="listaringreso.html" class="dropdown-item">Lista de Ingresos</a>
                                 </div>
                             </div>
                             <a href="contacto.html" class="nav-item nav-link">Contacto</a>
@@ -94,7 +101,7 @@
             </div>
         </div>
         <!-- Navbar End -->
-
+        <h1 class="registrarPacienteT">Registrar Pacientes</h1>
         <!-- from Star(fromulario inicio) -->
         <form class="row g-3 needs-validation" novalidate>
             <!-- <div class="col-md-4">
@@ -144,12 +151,12 @@
                 <input type="text" class="form-control" name="direccion" id="direccion" >
             </div>
             <div class="col-md-4">
-                <label for="nombre_persona_contacto" class="form-label">Nombre de persona de contacto</label>
-                <input type="text" class="form-control" name="nombre_persona_contacto" id="nombre_persona_contacto">
+                <label for="nombrePersonaContacto" class="form-label">Nombre de persona de contacto</label>
+                <input type="text" class="form-control" name="nombrePersonaContacto" id="nombrePersonaContacto">
             </div>
             <div class="col-md-4">
-                <label for="celular_persona_contacto" class="form-label">Celular de persona de contacto</label>
-                <input type="text" class="form-control" name="celular_persona_contacto" id="celular_persona_contacto" >
+                <label for="celularPersonaContacto" class="form-label">Celular de persona de contacto</label>
+                <input type="text" class="form-control" name="celularPersonaContacto" id="celularPersonaContacto" >
             </div>
             <div class="col-md-4">
                 <label for="estado" class="form-label">Estado</label>

@@ -38,8 +38,8 @@ function listarPaciente() {
                 celdacelular.innerText = result[i]["celular"];
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
-                celdaNombrePersonaContacto.innerText = result[i]["nombre_persona_contacto"];
-                celdaCelularPersonaContacto.innerText = result[i][ "celular_persona_contacto"];
+                celdaNombrePersonaContacto.innerText = result[i]["nombrePersonaContacto"];
+                celdaCelularPersonaContacto.innerText = result[i][ "celularPersonaContacto"];
                 celdaEstado.innerText = result[i]["estado"];
                 celdaEditar.innerHTML = "<button onclick='editarPaciente("+result
                 [i]["id"]+")' class='btn btn-primary'>Editar</button>";
@@ -83,8 +83,8 @@ function RegistrarPaciente() {
   let correo_electronico = document.getElementById("correo_electronico").value;
   let celular = document.getElementById("celular").value;
   let direccion = document.getElementById("direccion").value;
-  let nombre_persona_contacto = document.getElementById("nombre_persona_contacto").value;
-  let celular_persona_contacto = document.getElementById("celular_persona_contacto").value;
+  let nombrePersonaContacto = document.getElementById("nombrePersonaContacto").value;
+  let celularPersonaContacto = document.getElementById("celularPersonaContacto").value;
   let estado = document.getElementById("estado").value;
 
 
@@ -98,8 +98,8 @@ function RegistrarPaciente() {
     "correo_electronico": correo_electronico,
     "celular": celular,
     "direccion": direccion,
-    "nombre_persona_contacto" : nombre_persona_contacto ,
-    "celular_persona_contacto" : celular_persona_contacto,
+    "nombrePersonaContacto" : nombrePersonaContacto ,
+    "celularPersonaContacto" : celularPersonaContacto,
     "estado": estado
   };
 
