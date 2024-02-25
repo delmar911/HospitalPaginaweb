@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Hospital2Application",
+            "request": "launch",
+            "mainClass": "com.sena.hospital2.Hospital2Application",
+            "projectName": "hospital2"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-HospitalWebApplication<hospitalWeb>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

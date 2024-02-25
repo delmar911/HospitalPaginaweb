@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script src="js/paciente.js"></script>
  </head>
- <body onload="RegistrarPaciente();" >
+ <body >
         <!-- Topbar Start(Inicio de la barra superior) -->
         <div class="container-fluid py-2 d-none d-lg-flex" >
             <div class="container">
@@ -97,14 +97,14 @@
 
         <!-- from Star(fromulario inicio) -->
         <form class="row g-3 needs-validation" novalidate>
-            <div class="col-md-4">
-                <label for="txtid_Paciente" class="form-label">Id pacienete</label>
-                <input type="number" class="form-control" name="txtid_Paciente" id="txtid_Paciente"  onfocusout="validartxtIdPaciente(this);">
-            </div>
+            <!-- <div class="col-md-4">
+                <label for="txtid_Paciente" class="form-label">Codigo paciente</label>
+                <input type="text" class="form-control" name="txtid_Paciente" id="txtid_Paciente"  onfocusout="validartxtIdPaciente(this);">
+            </div> -->
             <div class="col-md-4">
                 <label for="tipo_documento" class="form-label">Tipo identificacion</label>
                 <select class="form-select" id="tipo_documento" focusout="validarTipo_documento(this);">
-                    <option selected disabled value="">Selecciona una Opcion</option>
+                    <option selected disabled value="">Seleccione una Opción</option>
                     <option value="RC">Registro Civil</option>
                     <option value="TI">Tarjeta de Identidad</option>
                     <option value="CC">Cedula de Ciudadanía</option>
@@ -112,63 +112,63 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="txtnumero_documento" class="form-label">Numero Documento</label>
-                <input type="number" class="form-control" name="txtnumero_documento" id="txtnumero_documento" step="1" onfocusout="validarNumeroIdentificacion(this);">
+                <label for="numero_documento" class="form-label">Número Documento</label>
+                <input type="text" class="form-control" name="numero_documento" id="numero_documento" step="1" onfocusout="validarNumeroIdentificacion(this);">
             </div>
             <div class="col-md-4">
-                <label for="txtprimer_nombre" class="form-label">Primer Nombre</label>
-                <input type="text" class="form-control" name="txtprimer_nombre" id="txtprimer_nombre"  onfocusout="validartxtPrimerNombre(this);">
+                <label for="primer_nombre" class="form-label">Primer Nombre</label>
+                <input type="text" class="form-control" name="primer_nombre" id="primer_nombre"  >
             </div>
             <div class="col-md-4">
-                <label for="txtsegundo_nombre" class="form-label">Segundo Nombre</label>
-                <input type="text" class="form-control" name="txtsegundo_nombre" id="txtsegundo_nombre"  onfocusout="validartxtSegundoNombre(this);">
+                <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
+                <input type="text" class="form-control" name="segundo_nombre" id="segundo_nombre"  >
             </div>
             <div class="col-md-4">
-                <label for="txtprimer_apellido" class="form-label">Primer apellido</label>
-                <input type="text" class="form-control" name="txtprimer_apellido" id="txtprimer_apellido" onfocusout="validartxtPrimerApellido(this);">
+                <label for="primer_apellido" class="form-label">Primer apellido</label>
+                <input type="text" class="form-control" name="primer_apellido" id="primer_apellido">
             </div>
             <div class="col-md-4">
-                <label for="txtsegundo_apellido" class="form-label">Segundo apellido</label>
-                <input type="text" class="form-control" name="txtsegundo_apellido" id="txtsegundo_apellido" onfocusout="validartxtSegundoApellido(this);">
+                <label for="segundo_apellido" class="form-label">Segundo apellido</label>
+                <input type="text" class="form-control" name="segundo_apellido" id="segundo_apellido">
             </div>
             <div class="col-md-4">
-                <label for="txtcelular" class="form-label">Nuemro Telefonico</label>
-                <input type="number" class="form-control" name="txtcelular" id="txtcelular"  onfocusout="validartxtNumeroTelefonico(this);">
+                <label for="celular" class="form-label">Numero Celular</label>
+                <input type="text" class="form-control" name="celular" id="celular" ">
             </div>
             <div class="col-md-4">
-                <label for="txtcorreo_electronico" class="form-label">Correo electronico</label>
-                <input type="number" class="form-control" name="txtcorreo_electronico" id="txtcorreo_electronico"  onfocusout="validartxtCorreoelectronico(this);">
+                <label for="correo_electronico" class="form-label">Correo electronico</label>
+                <input type="text" class="form-control" name="correo_electronico" id="correo_electronico" >
             </div>
             <div class="col-md-4">
-                <label for="txtDireccion" class="form-label">Direccion</label>
-                <input type="number" class="form-control" name="txtDireccion" id="txtDireccion"  onfocusout="validartxtDireccion(this);">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input type="text" class="form-control" name="direccion" id="direccion" >
             </div>
             <div class="col-md-4">
-                <label for="txtnombre_persona_contacto" class="form-label">Nombre del Acudiente</label>
-                <input type="text" class="form-control" name="txtnombre_persona_contacto" id="txtnombre_persona_contacto" onfocusout="validartxtNombreAcudiente(this);">
+                <label for="nombre_persona_contacto" class="form-label">Nombre de persona de contacto</label>
+                <input type="text" class="form-control" name="nombre_persona_contacto" id="nombre_persona_contacto">
             </div>
             <div class="col-md-4">
-                <label for="txtcelular_persona_contacto" class="form-label">celular del Acudiente</label>
-                <input type="text" class="form-control" name="txtcelular_persona_contacto" id="txtcelular_persona_contacto" onfocusout="validartxtTelefonoAcudiente(this);">
+                <label for="celular_persona_contacto" class="form-label">Celular de persona de contacto</label>
+                <input type="text" class="form-control" name="celular_persona_contacto" id="celular_persona_contacto" >
             </div>
             <div class="col-md-4">
                 <label for="estado" class="form-label">Estado</label>
-                 <select name="estado" id="estado" class="form-select"  focusout="validarEstado(this);">
-                    <option selected disabled value="">¿en que estado se encuentrnaa?...</option>
-                    <option value="1">Activo</option>
-                    <option value="2">inactivo</option>
+                 <select name="estado" id="estado" class="form-select"  >
+                    <option selected disabled value="">¿En qué estado se encuentra?...</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
                 </select>
             </div>
             <div class="col-12">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" onfocusout="validartxtPrimerNombre(this);">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" >
                     <label class="form-check-label"  for="invalidCheck">
                         Acepta todos los terminos y condiciones.
                     </label>
                 </div>
             </div>
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Registrar</button>
+                <button class="btn btn-primary" onclick="RegistrarPaciente();" type="submit">Registrar</button>
             </div>
         </form>
         <!-- from End(fromulario final) -->

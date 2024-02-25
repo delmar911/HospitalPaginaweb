@@ -1,13 +1,13 @@
 //se almacena la url de la api
-let url="http://localhost:8080/api/v1/paciente/";
+let url="http://localhost:8082/api/v1/paciente/";
 function listarPaciente() {
     $.ajax({
         url:url,
         type: "GET",
         success: function(result){//success: funcion que se ejecuta cusndo la peticion tiene exito
             console.log(result);
-            let cuerpoTabla = document.getElementById("cuerpoTabla");
-            cuerpoTabla.innerHTML="";
+            let cuerpoTablaPaciente = document.getElementById("cuerpoTablaPaciente");
+            cuerpoTablaPaciente.innerHTML="";
             for (let i = 0; i < result.length; i++) {
                //se crea una etiqueta tr por cada registro
                 let trRegistro = document.createElement("tr");//fila por cada registro de la tabla
@@ -18,40 +18,30 @@ function listarPaciente() {
                 let celdaSegundoNombre = document.createElement("td");
                 let celdaPrimerApellido = document.createElement("td");
                 let celdaSegundoApellido = document.createElement("td");
-                let celdaTelefono = document.createElement("td");
+                let celdacelular = document.createElement("td");
                 let celdaCorreo = document.createElement("td");
-                let celdaDireccion = document.createElement("td"); 
+                let celdaDireccion = document.createElement("td");
+                let celdaNombrePersonaContacto = document.createElement("td");
+                let celdaCelularPersonaContacto = document.createElement("td");
                 let celdaEstado = document.createElement("td");
                 let celdaEditar = document.createElement("td");
                 
                 //almacenamos en valor
                 
-<<<<<<< HEAD
-                celdaId.innerText = result[i]["id_"];
+                celdaId.innerText = result[i]["id_paciente"];
                 celdaTipoDocumento.innerText= result[i]["tipo_documento"];
                 celdaNumeroDocumento.innerText = result[i]["numero_documento"];
                 celdaPrimerNombre.innerText = result[i]["primer_nombre"];
                 celdaSegundoNombre.innerText = result[i]["segundo_nombre"];
                 celdaPrimerApellido.innerText = result[i]["primer_apellido"];
                 celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
-                celdaTelefono.innerText = result[i]["telefono"];
+                celdacelular.innerText = result[i]["celular"];
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
+                celdaNombrePersonaContacto.innerText = result[i]["nombre_persona_contacto"];
+                celdaCelularPersonaContacto.innerText = result[i][ "celular_persona_contacto"];
                 celdaEstado.innerText = result[i]["estado"];
-=======
-                celdaId.innerText = result[i]["celdaId"];
-                celdaTipoDocumento.innerText= result[i]["celdaTipoDocumento"];
-                celdaNumeroDocumento.innerText = result[i]["celdaNumeroDocumento"];
-                celdaPrimerNombre.innerText = result[i]["celdaPrimerNombre"];
-                celdaSegundoNombre.innerText = result[i]["celdaSegundoNombre"];
-                celdaPrimerApellido.innerText = result[i]["celdaPrimerApellido"];
-                celdaSegundoApellido.innerText = result[i]["celdaSegundoApellido"];
-                celdaTelefono.innerText = result[i]["celdaTelefono"];
-                celdaCorreo.innerText = result[i]["celdaCorreo"];
-                celdaDireccion.innerText = result[i]["celdaDireccion"];
-                celdaEstado.innerText = result[i]["celdaEstado"];
->>>>>>> 959f5538935f618b145af89e1168ac1e6d2bbcff
-                celdaEditar.innerHTML = "<button onclick='editarmMedico("+result
+                celdaEditar.innerHTML = "<button onclick='editarPaciente("+result
                 [i]["id"]+")' class='btn btn-primary'>Editar</button>";
                 
                 
@@ -64,13 +54,15 @@ function listarPaciente() {
                 trRegistro.appendChild(celdaSegundoNombre);
                 trRegistro.appendChild(celdaPrimerApellido);
                 trRegistro.appendChild(celdaSegundoApellido);
-                trRegistro.appendChild(celdaTelefono);
+                trRegistro.appendChild(celdacelular);
                 trRegistro.appendChild(celdaCorreo);
                 trRegistro.appendChild(celdaDireccion);
+                trRegistro.appendChild(celdaNombrePersonaContacto);
+                trRegistro.appendChild(celdaCelularPersonaContacto);
                 trRegistro.appendChild(celdaEstado);
                 trRegistro.appendChild(celdaEditar);
 
-                cuerpoTabla.appendChild(trRegistro);//se traen todos los registros
+                cuerpoTablaPaciente.appendChild(trRegistro);//se traen todos los registros
 
             }
         },
@@ -82,78 +74,78 @@ function listarPaciente() {
 //que es Cors
 function RegistrarPaciente() {
 
-    let tipo_documento = document.getElementById("Tipo_documento").value;
-    let numero_documento = document.getElementById("txtNumero_identificacion").value;
-    let primer_nombre = document.getElementById("txtPrimer_Nombre").value;
-    let segundo_nombre = document.getElementById("txtSegundo_Nombre").value;
-    let primer_apellido = document.getElementById("txtPrimer_Apellido").value;
-    let segundo_apellido = document.getElementById("txtSegundo_Apellido").value;
-    let correo = document.getElementById("txtCorreo_electronico").value;
-    let telefono = document.getElementById("txtNumero_Telefonico").value;
-    let direccion = document.getElementById("txtDireccion").value;
-    let estado = document.getElementById("Estado").value;
+  let tipo_documento = document.getElementById("tipo_documento").value;
+  let numero_documento = document.getElementById("numero_documento").value;
+  let primer_nombre = document.getElementById("primer_nombre").value;
+  let segundo_nombre = document.getElementById("segundo_nombre").value;
+  let primer_apellido = document.getElementById("primer_apellido").value;
+  let segundo_apellido = document.getElementById("segundo_apellido").value;
+  let correo_electronico = document.getElementById("correo_electronico").value;
+  let celular = document.getElementById("celular").value;
+  let direccion = document.getElementById("direccion").value;
+  let nombre_persona_contacto = document.getElementById("nombre_persona_contacto").value;
+  let celular_persona_contacto = document.getElementById("celular_persona_contacto").value;
+  let estado = document.getElementById("estado").value;
 
 
-    let formData = {
-        "tipo_documento": tipo_documento,
-        "numero_documento": numero_documento,
-        "primer_nombre": primer_nombre,
-        "segundo_nombre": segundo_nombre,
-        "primer_apellido": primer_apellido,
-        "segundo_apellido": segundo_apellido,
-        "telefono": telefono,
-        "correo_electronico": correo,
-        "direccion": direccion,
-        "estado": estado
-    };
+  let formData = {
+    "tipo_documento": tipo_documento,
+    "numero_documento": numero_documento,
+    "primer_nombre": primer_nombre,
+    "segundo_nombre": segundo_nombre,
+    "primer_apellido": primer_apellido,
+    "segundo_apellido": segundo_apellido,
+    "correo_electronico": correo_electronico,
+    "celular": celular,
+    "direccion": direccion,
+    "nombre_persona_contacto" : nombre_persona_contacto ,
+    "celular_persona_contacto" : celular_persona_contacto,
+    "estado": estado
+  };
 
-    if(validarCampos()){
-        $.ajax({
-          url: url,
-          type: "POST",
-          data: formData,
-          success: function(reslt){
-            Swal.fire({
-              title: "Exelengte",
-              text: "su registro se guardo correctamente",
-              icon: "success"
-            });
-            window.location.href= "http://localhost:5500/view/listarClientes.html";
-          },
-          error: function(error){
-            alert("error al guardar".error);
-          }
-        });
-      }else{
-       // alert("llena los campos correctamente")
-        Swal.fire({
-          title: "Error!",
-          text: "complete los campos correctamente",
-          icon: "error"
-        });
-      }
+  if (validarCampos()) {
+    $.ajax({
+        url:url,
+        type: "POST",
+        data: formData,
+        success: function (result){
+            alert("se guardó correctamente");
+        },
+        error: function (error) {
+            alert("error al guardar".error)
+        }
+    });
+}
+else{
+    Swal.fire(
+        'Error',
+        'Faltan campos por llenar!',
+        'error'
+      )
+}
+
+}
+
+function validarNumeroIdentificacion(cuadroNumero){
+    var valor=cuadroNumero.value; 
+    var valido=true; 
+    if(valor.length<5 || valor.length>11){
+      valido=false
     }
-
-    function validarNumeroIdentificacion(cuadroNumero){
-        var valor=cuadroNumero.value; 
-        var valido=true; 
-        if(valor.length<5 || valor.length>11){
-          valido=false
-        }
-        if (valido) {
-          //cuadro de texto cumple
-          //se modifica la clase del cuadro de textp
-          cuadroNumero.className="form-control is-valid";
-        }else{
-        //cuadro de texto no cumple 
-        cuadroNumero.className="form-control is-invalid";
-        }
-      return valido; 
-      }
-      function validarCampos(){
-        var numero_identificacion =document.getElementById("txtNumero_Identificacion"); 
-        return validarNumeroIdentificacion(numero_identificacion); 
-      }
+    if (valido) {
+      //cuadro de texto cumple
+      //se modifica la clase del cuadro de textp
+      cuadroNumero.className="form-control is-valid";
+    }else{
+    //cuadro de texto no cumple 
+    cuadroNumero.className="form-control is-invalid";
+    }
+  return valido; 
+}
+function validarCampos(){
+  var numero_documento =document.getElementById("numero_documento"); 
+  return validarNumeroIdentificacion(numero_documento); 
+}
 
 
 

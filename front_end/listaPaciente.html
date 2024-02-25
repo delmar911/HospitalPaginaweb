@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/estilos.css">
         <script src="js/paciente.js"></script>
    </head>
-    <body>
+    <body onload="listarPaciente();">
     
         <!-- Topbar Start(Inicio de la barra superior) -->
         <div class="container-fluid py-2 d-none d-lg-flex" >
@@ -101,7 +101,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Identificación</th>
+
+                    <th scope="col">Codigo  de paciente</th>
+                    <th scope="col">tipo Identificación</th>
                     <th scope="col">NO° Identificación</th>
                     <th scope="col">Primer Nombre</th>
                     <th scope="col">Segundo Nombre</th>
@@ -110,11 +112,12 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo </th>
                     <th scope="col">Direccion </th>
-                    <th scope="col">Acudiente</th>
+                    <th scope="col"> Nombre Acudiente</th>
+                    <th scope="col"> celular Acudiente</th>
                     <th scope="col">Estado</th>
                 </tr>
             </thead>
-            <tbody id="curpoTablaPaciente">
+            <tbody id="cuerpoTablaPaciente">
                      
             </tbody>
         </table>
