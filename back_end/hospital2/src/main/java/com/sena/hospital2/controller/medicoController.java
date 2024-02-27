@@ -36,6 +36,12 @@ public class medicoController {
 		return new ResponseEntity<>(ListaMedico, HttpStatus.OK);
 	}
 	
+	@GetMapping("/busquedafiltro/{filtro}")
+	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
+		var ListaMedico=medicoService.filtroMedico(filtro);
+		return new ResponseEntity<>(ListaMedico, HttpStatus.OK);
+	}
+	
 	//@PathVariable : Recibe una variable por enlace
 		@GetMapping("/{id}")
 		public ResponseEntity<Object> findOne(@PathVariable String id){
@@ -44,7 +50,7 @@ public class medicoController {
 			
 		}
 		
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/eliminarPermanente/{id}")
 		public ResponseEntity<Object> delete(@PathVariable String id){
 			 medicoService.delete(id);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);

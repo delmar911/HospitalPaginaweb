@@ -35,6 +35,14 @@ implements IpacienteService
 		//- se convierte a list <paciente>
 		return listaPaciente;
 	}
+	
+	@Override
+	public List<paciente> filtroPaciente(String filtro) {
+		List<paciente>ListaPaciente=data.filtroPaciente(filtro);
+		return ListaPaciente;
+	}
+	
+	
 	@Override
 	public Optional<paciente> findOne(String id) {
 		Optional<paciente> paciente=data.findById(id);

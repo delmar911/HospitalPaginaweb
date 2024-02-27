@@ -27,14 +27,22 @@ implements ImedicoService
 
 	@Override
 	public List<medico> findAll() {
-		List<medico> listaMedico=
+		List<medico> ListaMedico=
 				(List<medico>) data.findAll();
 		//(List<medico>) : Es un cast
 		//ya que findAll() retorna un objeto distinto
 		//- Retorna un iterable <medico>
 		//- se convierte a list <medico>
-		return listaMedico;
+		return ListaMedico;
 	}
+	
+	@Override
+	public List<medico> filtroMedico(String filtro) {
+		List<medico>ListaMedico=data.filtroMedico(filtro);
+		return ListaMedico;
+	}
+	
+	
 	@Override
 	public Optional<medico> findOne(String id) {
 		Optional<medico> medico=data.findById(id);
@@ -46,5 +54,7 @@ implements ImedicoService
 		data.deleteById(id);
 		return 1;
 	}
+
+	
 	
 }

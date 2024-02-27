@@ -12,6 +12,7 @@ import com.sena.hospital2.model.ingreso;
 public interface IingresoService {
 	public String save (ingreso ingreso);
 	public List<ingreso>findAll();
+	public List<ingreso> filtroIngreso(String filtro);
 	public Optional<ingreso> findOne(String id);
 	public int delete(String id);
 }

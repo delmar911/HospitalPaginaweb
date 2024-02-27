@@ -39,6 +39,12 @@ public class ingresoController {
 		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
 	}
 	
+	@GetMapping("/busquedafiltro/{filtro}")
+	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
+		var ListaIngreso=ingresoService.filtroIngreso(filtro);
+		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
+	}
+	
 	//@PathVariable : Recibe una variable por enlace
 		@GetMapping("/{id}")
 		public ResponseEntity<Object> findOne(@PathVariable String id){
@@ -47,7 +53,7 @@ public class ingresoController {
 			
 		}
 		
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/eliminarPermanente/{id}")
 		public ResponseEntity<Object> delete(@PathVariable String id){
 			 ingresoService.delete(id);
 					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);

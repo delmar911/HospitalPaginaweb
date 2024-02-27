@@ -35,6 +35,13 @@ implements IingresoService
 		//- se convierte a list <ingreso>
 		return listaIngreso;
 	}
+	
+	@Override
+	public List<ingreso> filtroIngreso(String filtro) {
+		List<ingreso>ListaIngreso=data.filtroIngreso(filtro);
+		return ListaIngreso;
+	}
+	
 	@Override
 	public Optional<ingreso> findOne(String id) {
 		Optional<ingreso> ingreso=data.findById(id);
