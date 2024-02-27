@@ -29,13 +29,14 @@ function listarIngreso() {
         celdaCama.innerText = result[i]["cama"];
         celdaFechaIngreso.innerText = result[i]["fecha_ingreso"];
         celdaFechaSalida.innerText = result[i]["fecha_salida"];
-        celdaIdMedico.innerText = nombre_completo_medico = result[i]["medico"]["primer_nombre"] +
-        " " +
-        result[i]["medico"]["segundo_nombre"] +
-        " " +
-        result[i]["medico"]["primer_apellido"] +
-        " " +
-        result[i]["medico"]["segundo_apellido"];
+        celdaIdMedico.innerText = nombre_completo_medico =
+          result[i]["medico"]["primer_nombre"] +
+          " " +
+          result[i]["medico"]["segundo_nombre"] +
+          " " +
+          result[i]["medico"]["primer_apellido"] +
+          " " +
+          result[i]["medico"]["segundo_apellido"];
 
         celdaIdPaciente.innerText = nombre_completo =
           result[i]["paciente"]["primer_nombre"] +
@@ -77,6 +78,8 @@ function registrarIngreso() {
   let cama = document.getElementById("cama").value;
   let fecha_ingreso = document.getElementById("fecha_ingreso").value;
   let fecha_salida = document.getElementById("fecha_salida").value;
+  let medico = document.getElementById("medico").value;
+  let paciente = document.getElementById("paciente").value;
   let estado = document.getElementById("estado").value;
 
   let formData = {
@@ -84,6 +87,8 @@ function registrarIngreso() {
     cama: cama,
     fecha_ingreso: fecha_ingreso,
     fecha_salida: fecha_salida,
+    medico: medico,
+    paciente: paciente,
     estado: estado,
   };
 
@@ -93,13 +98,98 @@ function registrarIngreso() {
       type: "POST",
       data: formData,
       success: function (result) {
-        alert("se guardó correctamente");
+     //   alert("se guardó correctamente");
+        
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Se ha registrado correctamente!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       },
       error: function (error) {
-        alert("error al guardar".error);
+       // alert("error al guardar".error);
+        Swal.fire("Error", "Error al guardar", "error");
       },
     });
   } else {
     Swal.fire("Error", "Faltan campos por llenar!", "error");
   }
+}
+function validarCampos() {
+  let habitacion = document.getElementById("habitacion");
+  return validarNumeroHabitacion(habitacion);
+}
+function validarNumeroHabitacion(cuadroNumero) {
+    
+  let valor = cuadroNumero.value;
+  let valido = true;
+  if (valor.length < 1 || valor.length > 4) {
+      valido = false
+  }
+
+  if (valido) {
+      cuadroNumero.className = "form-control is-valid"
+  }
+  else{
+      cuadroNumero.className = "form-control is-invalid"
+  }
+  return valido;
+}
+function CargarFormulario() {
+  cargarMedico();
+  cargarPaciente();
+}
+
+function cargarMedico() {
+  let urlMedico = "http://localhost:8082/api/v1/medico/";
+
+  $.ajax({
+    url: urlMedico,
+    type: "GET",
+    success: function (result) {
+      let medico = document.getElementById("medico");
+      medico.innerHTML = "";
+      for (let i = 0; i < result.length; i++) {
+        let nombreMedico = document.createElement("option");
+        nombreMedico.value = result[i]["id_medico"];
+        nombreMedico.innerText = nombre_completo_medico =
+          result[i]["primer_nombre"] +
+          " " +
+          result[i]["segundo_nombre"] +
+          " " +
+          result[i]["primer_apellido"] +
+          " " +
+          result[i]["segundo_apellido"];
+        medico.appendChild(nombreMedico);
+      }
+    },
+  });
+}
+function cargarPaciente() {
+  let urlpaciente = "http://localhost:8082/api/v1/paciente/";
+
+  $.ajax({
+    url: urlpaciente,
+    type: "GET",
+    success: function (result) {
+      let paciente = document.getElementById("paciente");
+      paciente.innerHTML = "";
+      for (let i = 0; i < result.length; i++) {
+        let nombrepaciente = document.createElement("option");
+        nombrepaciente.value = result[i]["id_paciente"];
+        nombrepaciente.innerText = nombre_completo_paciente =
+          result[i]["primer_nombre"] +
+          " " +
+          result[i]["segundo_nombre"] +
+          " " +
+          result[i]["primer_apellido"] +
+          " " +
+          result[i]["segundo_apellido"];
+        paciente.appendChild(nombrepaciente);
+      }
+    },
+  });
 }

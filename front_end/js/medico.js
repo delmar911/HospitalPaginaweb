@@ -20,6 +20,7 @@ function listarMedico() {
                 let celdaSegundoApellido = document.createElement("td");
                 let celdaCelular = document.createElement("td");
                 let celdaCorreo = document.createElement("td");
+                let celdaDireccion = document.createElement("td")
                 let celdaEstado = document.createElement("td");
                 let celdaEditar = document.createElement("td");
                 
@@ -34,6 +35,7 @@ function listarMedico() {
                 celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
                 celdaCelular.innerText = result[i]["celular"];
                 celdaCorreo.innerText = result[i]["correo_electronico"];
+                celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
                 celdaEditar.innerHTML = "<button onclick='editarMedico("+result
                 [i]["id_medico"]+")' class='btn btn-primary'>Editar</button>";
@@ -50,6 +52,7 @@ function listarMedico() {
                 trRegistro.appendChild(celdaSegundoApellido);
                 trRegistro.appendChild(celdaCelular);
                 trRegistro.appendChild(celdaCorreo);
+                trRegistro.appendChild(celdaDireccion);
                 trRegistro.appendChild(celdaEstado);
                 trRegistro.appendChild(celdaEditar);
 
@@ -72,6 +75,7 @@ function registrarMedico() {
     let primer_apellido = document.getElementById("primer_apellido").value;
     let segundo_apellido = document.getElementById("segundo_apellido").value;
     let correo_electronico = document.getElementById("correo_electronico").value;
+    let direccion = document.getElementById("direccion").value;
     let celular = document.getElementById("celular").value;
     let estado = document.getElementById("estado").value;
 
@@ -85,6 +89,7 @@ function registrarMedico() {
         "segundo_apellido": segundo_apellido,
         "celular": celular,
         "correo_electronico": correo_electronico,
+        "direccion": direccion,
         "estado": estado
     };
 
@@ -93,11 +98,20 @@ function registrarMedico() {
             url:url,
             type: "POST",
             data: formData,
-            success: function (result){
-                alert("se guardó correctamente");
+            success: function (result) {
+                  //alert("se guardó correctamente");
+                   
+                 Swal.fire({
+                   position: "center",
+                   icon: "success",
+                   title: "Se ha registrado correctamente!",
+                   showConfirmButton: false,
+                   timer: 1500
+                 });
             },
             error: function (error) {
-                alert("error al guardar".error)
+                //alert("error al guardar".error)
+                Swal.fire("Error", "Error al guardar", "error");
             }
         });
     }

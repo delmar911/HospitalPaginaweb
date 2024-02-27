@@ -109,10 +109,17 @@ function RegistrarPaciente() {
         type: "POST",
         data: formData,
         success: function (result){
-            alert("se guardó correctamente");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Se ha registrado correctamente!",
+            showConfirmButton: false,
+            timer: 1500
+          });
         },
         error: function (error) {
-            alert("error al guardar".error)
+          //  alert("error al guardar".error)
+          Swal.fire("Error", "Error al guardar", "error");
         }
     });
 }
