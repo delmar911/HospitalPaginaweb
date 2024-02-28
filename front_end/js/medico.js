@@ -101,8 +101,8 @@ function registrarMedico() {
           data: formData,
           success: function(reslt){
             Swal.fire({
-              title: "Exelengte",
-              text: "su registro se guardo correctamente",
+              title: "Excelente",
+              text: "Su registro se guardó correctamente",
               icon: "success"
             });
             // window.location.href= "http://127.0.0.1:5500/front_end/pacienteRegistro.html";
