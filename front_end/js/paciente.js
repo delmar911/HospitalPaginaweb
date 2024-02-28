@@ -119,7 +119,9 @@ function RegistrarPaciente() {
       success: function(reslt){
         Swal.fire({
           title: "Excelente",
-          text: "su registro se guardo correctamente",
+
+          text: "Su registro se guardó correctamente",
+
           icon: "success"
         });
         // window.location.href= "http://127.0.0.1:5500/front_end/listaPaciente.html";
