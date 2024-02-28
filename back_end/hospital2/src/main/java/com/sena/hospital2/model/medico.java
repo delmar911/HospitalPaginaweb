@@ -40,7 +40,7 @@ public class medico {
 	@Column(name = "correo_electronico", nullable = false, length = 255)
 	private String correo_electronico;
 	
-	@Column(name = "direccion", nullable = false, length = 100)
+	@Column(name = "direccion", nullable = false, length = 50)
 	private String direccion;
 
 	@Column(name = "estado", nullable = false, length = 10)

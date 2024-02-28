@@ -42,7 +42,7 @@ function listarPaciente() {
                 celdaCelularPersonaContacto.innerText = result[i][ "celularPersonaContacto"];
                 celdaEstado.innerText = result[i]["estado"];
                 celdaEditar.innerHTML = "<button onclick='editarPaciente("+result
-                [i]["id"]+")' class='btn btn-primary'>Editar</button>";
+                [i]["id_paciente"]+")' class='btn btn-primary'>Editar</button>";
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
