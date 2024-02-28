@@ -41,8 +41,15 @@ function listarPaciente() {
                 celdaNombrePersonaContacto.innerText = result[i]["nombrePersonaContacto"];
                 celdaCelularPersonaContacto.innerText = result[i][ "celularPersonaContacto"];
                 celdaEstado.innerText = result[i]["estado"];
-                celdaEditar.innerHTML = "<button onclick='editarPaciente("+result
-                [i]["id"]+")' class='btn btn-primary'>Editar</button>";
+
+                let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</buttonco>";
+                let button = document.createElement('button');
+                button.classList.add('btn', 'btn-primary');
+                button.setAttribute('data-bs-toggle', 'modal');
+                button.setAttribute('data-bs-target', '#exampleModal');
+                button.setAttribute('id', result[i]["id_paciente"]);
+                button.innerText = 'Editar';
+              celdaEditar.appendChild(button);
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -111,7 +118,7 @@ function RegistrarPaciente() {
       data: formData,
       success: function(reslt){
         Swal.fire({
-          title: "Exelengte",
+          title: "Excelente",
           text: "su registro se guardo correctamente",
           icon: "success"
         });

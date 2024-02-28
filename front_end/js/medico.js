@@ -37,8 +37,15 @@ function listarMedico() {
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
-                celdaEditar.innerHTML = "<button onclick='editarMedico("+result
-                [i]["id_medico"]+")' class='btn btn-primary'>Editar</button>";
+               
+                let buttonHTML = "<button id="+result[i]["id_medico"]+" class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
+                let button = document.createElement('button');
+                button.classList.add('btn', 'btn-primary');
+                button.setAttribute('data-bs-toggle', 'modal');
+                button.setAttribute('data-bs-target', '#exampleModal');
+                button.setAttribute('id', result[i]["id_medico"]);
+                button.innerText = 'Editar' ;
+              celdaEditar.appendChild(button);
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -101,8 +108,8 @@ function registrarMedico() {
           data: formData,
           success: function(reslt){
             Swal.fire({
-              title: "Exelengte",
-              text: "su registro se guardo correctamente",
+              title: "Excelente",
+              text: "Su registro se guardó correctamente",
               icon: "success"
             });
             // window.location.href= "http://127.0.0.1:5500/front_end/pacienteRegistro.html";
@@ -193,6 +200,64 @@ function validarDireccion(Direccion){
     }
     return valido;
   }
+
+  function consultarIdMedico(){
+    $.ajax({
+        url:url+id_medico,
+        type:'GET',
+        success: function(result){
+            console.log(result);
+            listarMedico();
+        }
+        
+    });
+}
+function updateMedico(id_medico){
+    let formData = {
+        "id_medico": document.getElementById('id_medico').value,
+        "primer_nombre" :  document.getElementById('primer_nombre').value,
+        "segundo_nombre" : document.getElementById("segundo_nombre").value,
+        "primer_apellido" : document.getElementById( 'primer_apellido' ).value,
+        "segundo_apellido" : document.getElementById("segundo_apellido").value,
+        "celular" : document.getElementById("celular").value,
+        "correo_electronico" : document.getElementById("correo_electronico").value,
+        "direccion"  : document.getElementById("direccion").value,
+        "estado" : document.getElementById("estado").value
+    }
+
+}
+
+if (validarCampos()){
+    $.ajax({
+        url:url+id,
+        type:"PUT",
+        success: function(result){
+            console.log(result);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Se guardo correctamente!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              listarMedico();
+
+        },
+        error: function (error) {
+            //alert("error al guardar".error)
+            Swal.fire("Error", "Error al guardar", "error");
+        }
+    }); 
+    
+}
+else{
+    Swal.fire(
+        'Error',
+        'Faltan campos por llenar!',
+        'error'
+      )
+}
+
 
 
 
