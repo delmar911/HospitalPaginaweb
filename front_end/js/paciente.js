@@ -103,34 +103,45 @@ function RegistrarPaciente() {
     "estado": estado
   };
 
-  if (validarCampos()) {
+  if(validarCampos()){
+
     $.ajax({
-        url:url,
-        type: "POST",
-        data: formData,
-        success: function (result){
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Se ha registrado correctamente!",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        },
-        error: function (error) {
-          //  alert("error al guardar".error)
-          Swal.fire("Error", "Error al guardar", "error");
-        }
+      url: url,
+      type: "POST",
+      data: formData,
+      success: function(reslt){
+        Swal.fire({
+          title: "Exelengte",
+          text: "su registro se guardo correctamente",
+          icon: "success"
+        });
+        // window.location.href= "http://127.0.0.1:5500/front_end/listaPaciente.html";
+      },
+      error: function(error){
+        alert("error al guardar".error);
+      }
     });
-}
-else{
-    Swal.fire(
-        'Error',
-        'Faltan campos por llenar!',
-        'error'
-      )
+  }else{
+   // alert("llena los campos correctamente")
+    Swal.fire({
+      title: "Error!",
+      text: "complete los campos correctamente",
+      icon: "error"
+    });
+  }
 }
 
+function validarCampos(){
+  var numero_documento =document.getElementById("numero_documento"); 
+  var primer_nombre = document.getElementById("primer_nombre"); 
+  var primer_apellido = document.getElementById("primer_apellido"); 
+  var direccion=document.getElementById("direccion");
+  var celular = document.getElementById("celular"); 
+  var nombrePersonaContacto = document.getElementById("nombrePersonaContacto"); 
+  var celularPersonaContacto = document.getElementById("celularPersonaContacto"); 
+  return validarNumeroIdentificacion(numero_documento) && validarNombreApellido(primer_nombre) 
+         && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion)
+         && validarAcudiente(nombrePersonaContacto) && validarCelular(celularPersonaContacto); 
 }
 
 function validarNumeroIdentificacion(cuadroNumero){
@@ -149,9 +160,67 @@ function validarNumeroIdentificacion(cuadroNumero){
     }
   return valido; 
 }
-function validarCampos(){
-  var numero_documento =document.getElementById("numero_documento"); 
-  return validarNumeroIdentificacion(numero_documento); 
+
+function validarNombreApellido(campo){
+  var value=campo.value;
+  var valido=true;
+  if(value.length<3 || value.length>30){
+      valido=false;
+  }
+
+  if (valido) {
+    campo.className = "form-control is-valid"
+  }
+  else{
+    campo.className = "form-control is-invalid"
+  }
+  return valido;
+}
+
+function validarCelular(Numero) {
+  
+  let valor = Numero.value;
+  let valido = true;
+  if (valor.length < 10 || valor.length >10) {
+      valido = false
+  }
+  if (valido) {
+      Numero.className = "form-control is-valid"
+  }
+  else{
+      Numero.className = "form-control is-invalid"
+  }
+  return valido;
+}
+
+function validarDireccion(Direccion){
+  let valor = Direccion.value;
+  let valido = true;
+  if (valor.length <=0 || valor.length >50) {
+      valido = false
+  }
+  if (valido) {
+    Direccion.className = "form-control is-valid"
+  }
+  else{
+    Direccion.className = "form-control is-invalid"
+  }
+  return valido;
+}
+
+function validarAcudiente(Acudiente){
+  let valor = Acudiente.value;
+  let valido = true;
+  if (valor.length <3 || valor.length >100) {
+      valido = false
+  }
+  if (valido) {
+    Acudiente.className = "form-control is-valid"
+  }
+  else{
+    Acudiente.className = "form-control is-invalid"
+  }
+  return valido;
 }
 
 

@@ -82,7 +82,7 @@
                         <div class="nav-item dropdown">
                             <a href="medicos.html" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Medicos</a>
                             <div class="dropdown-menu bg-light m-0">
-                                <a href="medicoRegistro.html" class="dropdown-item">Registro</a>
+                                <a href="#" class="dropdown-item"></a>
                                 <a href="listaMedicos.html" class="dropdown-item">Lista Medicos</a>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
 
           <div class="col-md-4">
             <label for="primer_nombre" class="form-label">Primer Nombre</label>
-            <input type="text" class="form-control"  name="primer_nombre" id="primer_nombre" >
+            <input type="text" class="form-control"  name="primer_nombre" id="primer_nombre" onfocusout="validarNombreApellido(this);">
           </div>
 
           <div class="col-md-4">
@@ -144,7 +144,7 @@
 
           <div class="col-md-4">
             <label for="primer_apellido" class="form-label">Primer apellido</label>
-            <input type="text" class="form-control" name="primer_apellido" id="primer_apellido"  ">
+            <input type="text" class="form-control" name="primer_apellido" id="primer_apellido"  onfocusout="validarNombreApellido(this);">
           </div>
 
           <div class="col-md-4">
@@ -154,7 +154,7 @@
 
           <div class="col-md-4">
             <label for="celular" class="form-label">Celular</label>
-            <input type="number" class="form-control" name="celular" id="celular"  >
+            <input type="number" class="form-control" name="celular" id="celular"   onfocusout="validarCelular(this);">
           </div>
 
           <div class="col-md-4">
@@ -163,7 +163,7 @@
           </div>
           <div class="col-md-4">
             <label for="direccion" class="form-label">Direccion</label>
-            <input type="text" class="form-control" name="direccion" id="direccion" >
+            <input type="text" class="form-control" name="direccion" id="direccion" onfocusout="validarDireccion(this);" >
           </div>
 
           <div class="col-md-4">
