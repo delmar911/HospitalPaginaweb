@@ -9,8 +9,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="js/medico.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+        
         <link rel="stylesheet" href="css/estilos.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
     
@@ -110,7 +111,7 @@
             <div class="col-4">
                 <div class="input-group mb-3 ">
                 <input type="text" class="form-control" placeholder="Buscar Medico" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="consultarIdMedico();">Buscar</button>
+                <button class="btn btn-outline-success" type="button" id="id_medico" onclick="consultarIdMedico();">Buscar</button>
                 </div>
             </div>
             
@@ -157,13 +158,13 @@
                    <h5 class="modal-title" id="exampleModalLabel">Modificar Medicos</h5>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
-               <div class="modal-body" >
+               <div class="modal-body"  >
                 <div class="row" >
 
 
                          <div class="col-6">
-                           <label for="txtid_medico" class="form-label">Código del medico</label>
-                           <input type="number" class="form-control" name="txtid_medico" id="txtid_medico"  onfocusout="validartxtIdMedico(this);">
+                           <label for="id_medico" class="form-label">Código del medico</label>
+                           <input type="number" class="form-control" name="id_medico" id="id_medico"  onfocusout="validartxtIdMedico(this);">
                          </div> 
                  
                          <div class="col-6">

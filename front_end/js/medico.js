@@ -38,7 +38,7 @@ function listarMedico() {
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
                
-                let buttonHTML = "<button id="+result[i]["id_medico"]+" class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
+                let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
                 let button = document.createElement('button');
                 button.classList.add('btn', 'btn-primary');
                 button.setAttribute('data-bs-toggle', 'modal');
@@ -139,20 +139,33 @@ function validarCampos() {
          && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
 }
 function validarNumeroDocumento(cuadroNumero) {
-    
+    if (!cuadroNumero || !cuadroNumero.value) {
+        return false;
+    }
+
     let valor = cuadroNumero.value;
     let valido = true;
     if (valor.length < 5 || valor.length > 11) {
-        valido = false
+        valido = false;
     }
 
     if (valido) {
-        cuadroNumero.className = "form-control is-valid"
-    }
-    else{
-        cuadroNumero.className = "form-control is-invalid"
+        cuadroNumero.className = "form-control is-valid";
+    } else {
+        cuadroNumero.className = "form-control is-invalid";
     }
     return valido;
+}
+
+function validarCampos() {
+    let numero_documento = document.getElementById("numero_documento");
+    var primer_nombre = document.getElementById("primer_nombre"); 
+    var primer_apellido = document.getElementById("primer_apellido"); 
+    var direccion=document.getElementById("direccion");
+    var celular = document.getElementById("celular"); 
+
+    return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
+         && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
 }
 
 function validarNombreApellido(campo){
@@ -211,6 +224,7 @@ function validarDireccion(Direccion){
         }
         
     });
+   
 }
 function updateMedico(id_medico){
     let formData = {
@@ -251,11 +265,7 @@ if (validarCampos()){
     
 }
 else{
-    Swal.fire(
-        'Error',
-        'Faltan campos por llenar!',
-        'error'
-      )
+    Swal.fire("Error", "Faltan campos por llanar!!", "error");
 }
 
 
