@@ -151,8 +151,8 @@
 
 
                       <div class="col-6">
-                        <label for="txtid_medico" class="form-label">Código del Paciente</label>
-                        <input type="number" class="form-control" name="txtid_medico" id="txtid_medico"  onfocusout="validartxtIdMedico(this);">
+                        <label for="id_paciente" class="form-label">Código del Paciente</label>
+                        <input type="number" class="form-control" name="id_paciente" id="id_paciente">
                       </div> 
               
                       <div class="col-6">
@@ -169,6 +169,7 @@
                        <div class="col-6">
                           <label for="numero_documento" class="form-label">Número de Identificación</label>
                           <input type="number" class="form-control" name="numero_documento" id="numero_documento"  step="1" onfocusout="validarNumeroDocumento(this);">
+                          <input type="hidden" id="id_paciente" step="1">
                         </div>
               
                         <div class="col-6">
@@ -223,8 +224,8 @@
                    
                   </div> 
                   <div class="modal-footer">
-                    <button type="button"  class="btn btn-success" ><i class="fa-regular fa-floppy-disk"></i>Guardar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success" onclick="updatePaciente();">Guardar</button>
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
           </div>
         </div>    

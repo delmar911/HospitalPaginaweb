@@ -122,6 +122,7 @@ function validarCampos() {
   let habitacion = document.getElementById("habitacion");
   return validarNumeroHabitacion(habitacion);
 }
+
 function validarNumeroHabitacion(cuadroNumero) {
     
   let valor = cuadroNumero.value;
@@ -191,6 +192,62 @@ function cargarPaciente() {
         paciente.appendChild(nombrepaciente);
       }
     },
+  });
+}
+
+function updateIngreso() {
+  var id_ingreso = document.getElementById("id_ingreso").value;
+
+  let formData = {
+      "habitacion": document.getElementById("habitacion").value,
+  };
+
+
+  //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
+  if(validarCampos()){
+  $.ajax({
+      url: url + id_ingreso,
+      type: "PUT",
+      data: formData,
+      success: function(result) {
+          Swal.fire({
+              title: "Excelente",
+              text: "Su registro se actualizó correctamente",
+              icon: "success"
+          });
+          
+          var modal = document.getElementById("exampleModal"); 
+          modal.style.display = "hide";
+          
+          listarIngreso(); //Lista los médicos después de actualizar
+      },
+      error: function(error) {
+          Swal.fire("Error", "Error al guardar", "error");
+      }  
+  });
+  }else{
+      Swal.fire({
+          title: "Error!",
+          text: "complete los campos correctamente",
+          icon: "error"
+      });
+      }
+}
+
+
+/* metodo para obtener los datos en el modal de actualizar*/ 
+//1.Crear petición que traiga la información del medico por id
+function consultarIngresoID(id){
+  //alert(id);
+  $.ajax({
+      url:url+id,
+      type:"GET",
+      success: function(result){
+          
+          document.getElementById("id_ingreso").value=result["id_ingreso"];
+          document.getElementById("habitacion").value=result["habitacion"];
+          
+      }
   });
 }
 

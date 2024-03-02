@@ -68,7 +68,7 @@ function listarMedico() {
                 let celdaOpcion= document.createElement("td");
                 let botonEditarMedico= document.createElement("button");
                 botonEditarMedico.value=result[i]["id_medico"];
-                botonEditarMedico.innerHTML="editar"; 
+                botonEditarMedico.innerHTML="Editar"; 
 
                 botonEditarMedico.onclick=function(e){
                     $('#exampleModal').modal('show');
@@ -123,7 +123,7 @@ function registrarMedico() {
           url: url,
           type: "POST",
           data: formData,
-          success: function(reslt){
+          success: function(result){
             Swal.fire({
               title: "Excelente",
               text: "Su registro se guardó correctamente",
@@ -148,7 +148,7 @@ function registrarMedico() {
 
 //Paso para que el usuario se registre y llene todos los datos correctamente :D****
 function validarCampos() {
-    let numero_documento = document.getElementById("numero_documento");
+    var numero_documento = document.getElementById("numero_documento");
     var primer_nombre = document.getElementById("primer_nombre"); 
     var primer_apellido = document.getElementById("primer_apellido"); 
     var direccion=document.getElementById("direccion");
@@ -157,6 +157,7 @@ function validarCampos() {
     return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
          && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
 }
+
 function validarNumeroDocumento(cuadroNumero) {
     if (!cuadroNumero || !cuadroNumero.value) {
         return false;
@@ -176,16 +177,6 @@ function validarNumeroDocumento(cuadroNumero) {
     return valido;
 }
 
-// function validarCampos() {
-//     let numero_documento = document.getElementById("numero_documento");
-//     var primer_nombre = document.getElementById("primer_nombre"); 
-//     var primer_apellido = document.getElementById("primer_apellido"); 
-//     var direccion=document.getElementById("direccion");
-//     var celular = document.getElementById("celular"); 
-
-//     return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
-//          && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
-// }
 
 function validarNombreApellido(campo){
     var valido=true;
@@ -201,6 +192,8 @@ function validarNombreApellido(campo){
     }
     return valido;
 }
+
+
 function validarCelular(Numero) {
     
     let valor = Numero.value;
@@ -218,6 +211,7 @@ function validarCelular(Numero) {
     return valido;
 }
 
+
 function validarDireccion(Direccion){
     let valor = Direccion.value;
     let valido = true;
@@ -233,63 +227,55 @@ function validarDireccion(Direccion){
     return valido;
 }
 
-/*Actualizar*/ 
-// function consultarIdMedico(){
-//     $.ajax({
-//         url:url+id_medico,
-//         type:'GET',
-//         success: function(result){
-//             console.log(result);
-//             listarMedico();
-//         }
-        
-//     });  
-// }
 
-/*actualizar*/
-function updateMedico(){
-    var id_medico= document.getElementById("id_medico").value
+//Cuando le damos click al boton de guardar, este llamara a la function updateMedico por medio del onclick******
+function updateMedico() {
+    var id_medico = document.getElementById("id_medico").value;
 
     let formData = {
-        "tipo_documento" : document.getElementById("tipo_documento").value,
-        "numero_documento" : document.getElementById("numero_documento").value,
-        "primer_nombre" :  document.getElementById("primer_nombre").value,
-        "segundo_nombre" : document.getElementById("segundo_nombre").value,
-        "primer_apellido" : document.getElementById("primer_apellido").value,
-        "segundo_apellido" : document.getElementById("segundo_apellido").value,
-        "celular" : document.getElementById("celular").value,
-        "correo_electronico" : document.getElementById("correo_electronico").value,
-        "direccion"  : document.getElementById("direccion").value,
-        "estado" : document.getElementById("estado").value
-    }
-};
+        "tipo_documento": document.getElementById("tipo_documento").value,
+        "numero_documento": document.getElementById("numero_documento").value,
+        "primer_nombre": document.getElementById("primer_nombre").value,
+        "segundo_nombre": document.getElementById("segundo_nombre").value,
+        "primer_apellido": document.getElementById("primer_apellido").value,
+        "segundo_apellido": document.getElementById("segundo_apellido").value,
+        "celular": document.getElementById("celular").value,
+        "correo_electronico": document.getElementById("correo_electronico").value,
+        "direccion": document.getElementById("direccion").value,
+        "estado": document.getElementById("estado").value
+    };
 
-/*if (validarCampos()){
+
+    //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
+    if(validarCampos()){
     $.ajax({
-        url:url+id,
-        type:"PUT",
-        success: function(result){
-            console.log(result);
+        url: url + id_medico,
+        type: "PUT",
+        data: formData,
+        success: function(result) {
             Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Se guardo correctamente!",
-                showConfirmButton: false,
-                timer: 1500
-              });
-              listarMedico();
-
+                title: "Excelente",
+                text: "Su registro se actualizó correctamente",
+                icon: "success"
+            });
+            
+            var modal = document.getElementById("exampleModal"); 
+            modal.style.display = "hide";
+            
+            listarMedico(); //Lista los médicos después de actualizar
         },
-        error: function (error) {
-            //alert("error al guardar".error)
+        error: function(error) {
             Swal.fire("Error", "Error al guardar", "error");
+        }  
+    });
+    }else{
+        Swal.fire({
+            title: "Error!",
+            text: "complete los campos correctamente",
+            icon: "error"
+        });
         }
-    }); 
-   
 }
-else{
-    Swal.fire("Error", "Faltan campos por llanar!!", "error");
-}*/
 
 
 /* metodo para obtener los datos en el modal de actualizar*/ 

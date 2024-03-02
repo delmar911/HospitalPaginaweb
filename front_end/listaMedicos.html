@@ -162,7 +162,7 @@
 
                          <div class="col-6">
                            <label for="id_medico" class="form-label">Código del medico</label>
-                           <input type="number" class="form-control" name="id_medico" id="id_medico"  onfocusout="validartxtIdMedico(this);">
+                           <input type="number" class="form-control" name="id_medico" id="id_medico" >
                          </div> 
                  
                          <div class="col-6">
@@ -227,7 +227,8 @@
                       
                      </div> 
                      <div class="modal-footer">
-                       <button type="button"  class="btn btn-success" ><i class="fa-regular fa-floppy-disk"></i>Guardar</button>
+                        <button type="submit" class="btn btn-success" onclick="updateMedico();">Guardar</button>
+
                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                    </div>
              </div>

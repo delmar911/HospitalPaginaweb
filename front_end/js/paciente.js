@@ -73,7 +73,7 @@ function listarPaciente() {
                 let celdaOpcion= document.createElement("td");
                 let botonEditarPaciente= document.createElement("button");
                 botonEditarPaciente.value=result[i]["id_paciente"];
-                botonEditarPaciente.innerHTML="editar"; 
+                botonEditarPaciente.innerHTML="Editar"; 
 
                 botonEditarPaciente.onclick=function(e){
                     $('#exampleModal').modal('show');
@@ -131,7 +131,7 @@ function RegistrarPaciente() {
       url: url,
       type: "POST",
       data: formData,
-      success: function(reslt){
+      success: function(result){
         Swal.fire({
           title: "Excelente",
 
@@ -155,20 +155,22 @@ function RegistrarPaciente() {
   }
 }
 
-function validarCampos(){
-  var numero_documento =document.getElementById("numero_documento"); 
+function validarCampos() {
+  var numero_documento = document.getElementById("numero_documento"); 
   var primer_nombre = document.getElementById("primer_nombre"); 
   var primer_apellido = document.getElementById("primer_apellido"); 
   var direccion=document.getElementById("direccion");
   var celular = document.getElementById("celular"); 
   var nombrePersonaContacto = document.getElementById("nombrePersonaContacto"); 
   var celularPersonaContacto = document.getElementById("celularPersonaContacto"); 
-  return validarNumeroIdentificacion(numero_documento) && validarNombreApellido(primer_nombre) 
+
+
+  return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
          && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion)
          && validarAcudiente(nombrePersonaContacto) && validarCelular(celularPersonaContacto); 
 }
 
-function validarNumeroIdentificacion(cuadroNumero){
+function validarNumeroDocumento(cuadroNumero){
     var valor=cuadroNumero.value; 
     var valido=true; 
     if(valor.length<5 || valor.length>11){
@@ -249,8 +251,10 @@ function validarAcudiente(Acudiente){
 
 /*actualizar*/
 function updatePaciente(){
-  var id_paciente= document.getElementById("id_paciente").value
+  var id_paciente= document.getElementById("id_paciente").value;
+
   let formData = {
+
       "tipo_documento" :  document.getElementById("tipo_documento").value,
       "numero_documento" : document.getElementById("numero_documento").value,
       "primer_nombre" : document.getElementById("primer_nombre").value,
@@ -262,10 +266,43 @@ function updatePaciente(){
       "direccion" : document.getElementById("direccion").value,
       "nombrePersonaContacto" : document.getElementById("nombrePersonaContacto").value,
       "celularPersonaContacto" : document.getElementById("celularPersonaContacto").value,
-      "estado" : document.getElementById("estado").value,
-      
-  }
-};
+      "estado" : document.getElementById("estado").value
+  };
+
+//Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
+//Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
+if(validarCampos()){
+  $.ajax({
+      url: url+id_paciente,
+      type: "PUT",
+      data: formData,
+      success: function(result) {
+          Swal.fire({
+              title: "Excelente",
+              text: "Su registro se actualizó correctamente",
+              icon: "success"
+          });
+          
+          var modal = document.getElementById("exampleModal"); 
+          modal.style.display = "hide";
+          
+          listarPaciente(); //Lista los médicos después de actualizar
+      },
+      error: function(error) {
+          Swal.fire("Error", "Error al guardar", "error");
+      }  
+  });
+  }else{
+      Swal.fire({
+          title: "Error!",
+          text: "complete los campos correctamente",
+          icon: "error"
+      });
+      }
+}
+
+
+
 
 /* metodo para obtener los datos en el modal de actualizar*/ 
 //1.Crear petición que traiga la información del medico por id
@@ -275,7 +312,11 @@ function consultarPacienteID(id){
       url:url+id,
       type:"GET",
       success: function(result){
-          // document.getElementById("id_paciente").value=result["id_paciente"];
+        
+          
+          document.getElementById("id_paciente").value=result["id_paciente"];
+          document.getElementById("tipo_documento").value=result["tipo_documento"];
+          document.getElementById("numero_documento").value=result["numero_documento"];
           document.getElementById("primer_nombre").value=result["primer_nombre"];
           document.getElementById("segundo_nombre").value=result["segundo_nombre"];
           document.getElementById("primer_apellido").value=result["primer_apellido"];
