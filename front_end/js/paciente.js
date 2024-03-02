@@ -24,7 +24,7 @@ function listarPaciente() {
                 let celdaNombrePersonaContacto = document.createElement("td");
                 let celdaCelularPersonaContacto = document.createElement("td");
                 let celdaEstado = document.createElement("td");
-                let celdaEditar = document.createElement("td");
+                // let celdaEditar = document.createElement("td");
                 
                 //almacenamos en valor
                 
@@ -42,14 +42,14 @@ function listarPaciente() {
                 celdaCelularPersonaContacto.innerText = result[i][ "celularPersonaContacto"];
                 celdaEstado.innerText = result[i]["estado"];
 
-                let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</buttonco>";
-                let button = document.createElement('button');
-                button.classList.add('btn', 'btn-primary');
-                button.setAttribute('data-bs-toggle', 'modal');
-                button.setAttribute('data-bs-target', '#exampleModal');
-                button.setAttribute('id', result[i]["id_paciente"]);
-                button.innerText = 'Editar';
-              celdaEditar.appendChild(button);
+              //   let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</buttonco>";
+              //   let button = document.createElement('button');
+              //   button.classList.add('btn', 'btn-primary');
+              //   button.setAttribute('data-bs-toggle', 'modal');
+              //   button.setAttribute('data-bs-target', '#exampleModal');
+              //   button.setAttribute('id', result[i]["id_paciente"]);
+              //   button.innerText = 'Editar';
+              // celdaEditar.appendChild(button);
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -67,7 +67,22 @@ function listarPaciente() {
                 trRegistro.appendChild(celdaNombrePersonaContacto);
                 trRegistro.appendChild(celdaCelularPersonaContacto);
                 trRegistro.appendChild(celdaEstado);
-                trRegistro.appendChild(celdaEditar);
+                // trRegistro.appendChild(celdaEditar);
+
+                //boton editar 
+                let celdaOpcion= document.createElement("td");
+                let botonEditarPaciente= document.createElement("button");
+                botonEditarPaciente.value=result[i]["id_paciente"];
+                botonEditarPaciente.innerHTML="editar"; 
+
+                botonEditarPaciente.onclick=function(e){
+                    $('#exampleModal').modal('show');
+                    consultarPacienteID(this.value); 
+                }
+                botonEditarPaciente.className= "btn btn-primary"
+
+                celdaOpcion.appendChild(botonEditarPaciente); 
+                trRegistro.appendChild(celdaOpcion)
 
                 cuerpoTablaPaciente.appendChild(trRegistro);//se traen todos los registros
 
@@ -232,6 +247,48 @@ function validarAcudiente(Acudiente){
   return valido;
 }
 
+/*actualizar*/
+function updatePaciente(){
+  var id_paciente= document.getElementById("id_paciente").value
+  let formData = {
+      "tipo_documento" :  document.getElementById("tipo_documento").value,
+      "numero_documento" : document.getElementById("numero_documento").value,
+      "primer_nombre" : document.getElementById("primer_nombre").value,
+      "segundo_nombre" : document.getElementById("segundo_nombre").value,
+      "primer_apellido" : document.getElementById("primer_apellido").value,
+      "segundo_apellido" : document.getElementById("segundo_apellido").value,
+      "correo_electronico"  : document.getElementById("correo_electronico").value,
+      "celular" : document.getElementById("celular").value,
+      "direccion" : document.getElementById("direccion").value,
+      "nombrePersonaContacto" : document.getElementById("nombrePersonaContacto").value,
+      "celularPersonaContacto" : document.getElementById("celularPersonaContacto").value,
+      "estado" : document.getElementById("estado").value,
+      
+  }
+};
+
+/* metodo para obtener los datos en el modal de actualizar*/ 
+//1.Crear petición que traiga la información del medico por id
+function consultarPacienteID(id){
+  //alert(id);
+  $.ajax({
+      url:url+id,
+      type:"GET",
+      success: function(result){
+          // document.getElementById("id_paciente").value=result["id_paciente"];
+          document.getElementById("primer_nombre").value=result["primer_nombre"];
+          document.getElementById("segundo_nombre").value=result["segundo_nombre"];
+          document.getElementById("primer_apellido").value=result["primer_apellido"];
+          document.getElementById("segundo_apellido").value=result["segundo_apellido"];
+          document.getElementById("correo_electronico").value=result["correo_electronico"];
+          document.getElementById("celular").value=result["celular"];
+          document.getElementById("direccion").value=result["direccion"];
+          document.getElementById("nombrePersonaContacto").value=result["nombrePersonaContacto"];
+          document.getElementById("celularPersonaContacto").value=result["celularPersonaContacto"];
+          document.getElementById("estado").value=result["estado"];
+      }
+  });
+}
 
 
 
