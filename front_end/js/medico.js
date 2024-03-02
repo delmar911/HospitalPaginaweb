@@ -63,7 +63,6 @@ function listarMedico() {
                 trRegistro.appendChild(celdaCorreo);
                 trRegistro.appendChild(celdaDireccion);
                 trRegistro.appendChild(celdaEstado);
-                // trRegistro.appendChild(celdaEditar);
                 
                 //boton editar 
                 let celdaOpcion= document.createElement("td");
@@ -89,7 +88,8 @@ function listarMedico() {
         }
     })
 }
-//que es Cors
+
+//Paso para crear el registro de un médico ****
 function registrarMedico() {
     
     let tipo_documento = document.getElementById("tipo_documento").value;
@@ -145,6 +145,8 @@ function registrarMedico() {
       }
 }
 
+
+//Paso para que el usuario se registre y llene todos los datos correctamente :D****
 function validarCampos() {
     let numero_documento = document.getElementById("numero_documento");
     var primer_nombre = document.getElementById("primer_nombre"); 
@@ -247,7 +249,10 @@ function validarDireccion(Direccion){
 /*actualizar*/
 function updateMedico(){
     var id_medico= document.getElementById("id_medico").value
+
     let formData = {
+        "tipo_documento" : document.getElementById("tipo_documento").value,
+        "numero_documento" : document.getElementById("numero_documento").value,
         "primer_nombre" :  document.getElementById("primer_nombre").value,
         "segundo_nombre" : document.getElementById("segundo_nombre").value,
         "primer_apellido" : document.getElementById("primer_apellido").value,
@@ -297,6 +302,8 @@ function consultarMedicoID(id){
         success: function(result){
             
             document.getElementById("id_medico").value=result["id_medico"];
+            document.getElementById("tipo_documento").value=result["tipo_documento"];
+            document.getElementById("numero_documento").value=result["numero_documento"];
             document.getElementById("primer_nombre").value=result["primer_nombre"];
             document.getElementById("segundo_nombre").value=result["segundo_nombre"];
             document.getElementById("primer_apellido").value=result["primer_apellido"];
