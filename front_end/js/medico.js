@@ -22,7 +22,7 @@ function listarMedico() {
                 let celdaCorreo = document.createElement("td");
                 let celdaDireccion = document.createElement("td")
                 let celdaEstado = document.createElement("td");
-                let celdaEditar = document.createElement("td");
+                // let celdaEditar = document.createElement("td");
                 
                 //almacenamos en valor
                 
@@ -37,15 +37,17 @@ function listarMedico() {
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
-               
-                let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
-                let button = document.createElement('button');
-                button.classList.add('btn', 'btn-primary');
-                button.setAttribute('data-bs-toggle', 'modal');
-                button.setAttribute('data-bs-target', '#exampleModal');
-                button.setAttribute('id', result[i]["id_medico"]);
-                button.innerText = 'Editar' ;
-              celdaEditar.appendChild(button);
+
+            
+
+                // let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
+                // let button = document.createElement('button');
+                // button.classList.add('btn', 'btn-primary');
+                // button.setAttribute('data-bs-toggle', 'modal');
+                // button.setAttribute('data-bs-target', '#exampleModal');
+                // button.setAttribute('id', result[i]["id_medico"]);
+                // button.innerText = 'Editar' ;
+                // celdaEditar.appendChild(button);
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -61,7 +63,22 @@ function listarMedico() {
                 trRegistro.appendChild(celdaCorreo);
                 trRegistro.appendChild(celdaDireccion);
                 trRegistro.appendChild(celdaEstado);
-                trRegistro.appendChild(celdaEditar);
+                // trRegistro.appendChild(celdaEditar);
+                
+                //boton editar 
+                let celdaOpcion= document.createElement("td");
+                let botonEditarMedico= document.createElement("button");
+                botonEditarMedico.value=result[i]["id_medico"];
+                botonEditarMedico.innerHTML="editar"; 
+
+                botonEditarMedico.onclick=function(e){
+                    $('#exampleModal').modal('show');
+                    consultarMedicoID(this.value); 
+                }
+                botonEditarMedico.className= "btn btn-primary"
+
+                celdaOpcion.appendChild(botonEditarMedico); 
+                trRegistro.appendChild(celdaOpcion)
 
                 curpoTablaMedico.appendChild(trRegistro);//se traen todos los registros
 
@@ -126,7 +143,7 @@ function registrarMedico() {
           icon: "error"
         });
       }
-    }
+}
 
 function validarCampos() {
     let numero_documento = document.getElementById("numero_documento");
@@ -157,16 +174,16 @@ function validarNumeroDocumento(cuadroNumero) {
     return valido;
 }
 
-function validarCampos() {
-    let numero_documento = document.getElementById("numero_documento");
-    var primer_nombre = document.getElementById("primer_nombre"); 
-    var primer_apellido = document.getElementById("primer_apellido"); 
-    var direccion=document.getElementById("direccion");
-    var celular = document.getElementById("celular"); 
+// function validarCampos() {
+//     let numero_documento = document.getElementById("numero_documento");
+//     var primer_nombre = document.getElementById("primer_nombre"); 
+//     var primer_apellido = document.getElementById("primer_apellido"); 
+//     var direccion=document.getElementById("direccion");
+//     var celular = document.getElementById("celular"); 
 
-    return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
-         && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
-}
+//     return validarNumeroDocumento(numero_documento) && validarNombreApellido(primer_nombre) 
+//          && validarNombreApellido(primer_apellido) && validarCelular(celular) && validarDireccion(direccion);
+// }
 
 function validarNombreApellido(campo){
     var valido=true;
@@ -212,36 +229,37 @@ function validarDireccion(Direccion){
       Direccion.className = "form-control is-invalid"
     }
     return valido;
-  }
-
-  function consultarIdMedico(){
-    $.ajax({
-        url:url+id_medico,
-        type:'GET',
-        success: function(result){
-            console.log(result);
-            listarMedico();
-        }
-        
-    });
-   
 }
-function updateMedico(id_medico){
+
+/*Actualizar*/ 
+// function consultarIdMedico(){
+//     $.ajax({
+//         url:url+id_medico,
+//         type:'GET',
+//         success: function(result){
+//             console.log(result);
+//             listarMedico();
+//         }
+        
+//     });  
+// }
+
+/*actualizar*/
+function updateMedico(){
+    var id_medico= document.getElementById("id_medico").value
     let formData = {
-        "id_medico": document.getElementById('id_medico').value,
-        "primer_nombre" :  document.getElementById('primer_nombre').value,
+        "primer_nombre" :  document.getElementById("primer_nombre").value,
         "segundo_nombre" : document.getElementById("segundo_nombre").value,
-        "primer_apellido" : document.getElementById( 'primer_apellido' ).value,
+        "primer_apellido" : document.getElementById("primer_apellido").value,
         "segundo_apellido" : document.getElementById("segundo_apellido").value,
         "celular" : document.getElementById("celular").value,
         "correo_electronico" : document.getElementById("correo_electronico").value,
         "direccion"  : document.getElementById("direccion").value,
         "estado" : document.getElementById("estado").value
     }
+};
 
-}
-
-if (validarCampos()){
+/*if (validarCampos()){
     $.ajax({
         url:url+id,
         type:"PUT",
@@ -262,13 +280,34 @@ if (validarCampos()){
             Swal.fire("Error", "Error al guardar", "error");
         }
     }); 
-    
+   
 }
 else{
     Swal.fire("Error", "Faltan campos por llanar!!", "error");
+}*/
+
+
+/* metodo para obtener los datos en el modal de actualizar*/ 
+//1.Crear petición que traiga la información del medico por id
+function consultarMedicoID(id){
+    //alert(id);
+    $.ajax({
+        url:url+id,
+        type:"GET",
+        success: function(result){
+            
+            document.getElementById("id_medico").value=result["id_medico"];
+            document.getElementById("primer_nombre").value=result["primer_nombre"];
+            document.getElementById("segundo_nombre").value=result["segundo_nombre"];
+            document.getElementById("primer_apellido").value=result["primer_apellido"];
+            document.getElementById("segundo_apellido").value=result["segundo_apellido"];
+            document.getElementById("celular").value=result["celular"];
+            document.getElementById("correo_electronico").value=result["correo_electronico"];
+            document.getElementById("direccion").value=result["direccion"];
+            document.getElementById("estado").value=result["estado"];
+        }
+    });
 }
-
-
 
 
 
