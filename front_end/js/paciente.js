@@ -273,7 +273,7 @@ function updatePaciente(){
 //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
 if(validarCampos()){
   $.ajax({
-      url: url+id_paciente,
+      url: url + id_paciente,
       type: "PUT",
       data: formData,
       success: function(result) {
