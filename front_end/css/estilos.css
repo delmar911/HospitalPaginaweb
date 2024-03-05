@@ -52,7 +52,7 @@
 .icon-box-primary i,
 .icon-box-light i {
     font-size: 60px;
-    line-height: 0;
+    
 }
 
 .icon-box-primary::before,
