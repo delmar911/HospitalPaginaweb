@@ -77,7 +77,7 @@ function listarMedico() {
                 botonEditarMedico.className= "btn btn-primary"
 
                 celdaOpcion.appendChild(botonEditarMedico); 
-                trRegistro.appendChild(celdaOpcion)
+                trRegistro.appendChild(celdaOpcion);
 
                 curpoTablaMedico.appendChild(trRegistro);//se traen todos los registros
 

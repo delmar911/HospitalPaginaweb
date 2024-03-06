@@ -47,10 +47,7 @@ function listarIngreso() {
           " " +
           result[i]["paciente"]["segundo_apellido"];
         celdaEstado.innerText = result[i]["estado"];
-        celdaEditar.innerHTML =
-          "<button onclick='editarIngreso(" +
-          result[i]["id_ingreso"] +
-          ")' class='btn btn-primary'>Editar</button>";
+       
 
         //agregando a los td a su respectivo th y agregandolos a la fila
 
@@ -62,7 +59,22 @@ function listarIngreso() {
         trRegistro.appendChild(celdaIdMedico);
         trRegistro.appendChild(celdaIdPaciente);
         trRegistro.appendChild(celdaEstado);
-        trRegistro.appendChild(celdaEditar);
+    
+
+         //boton editar 
+         let celdaOpcion= document.createElement("td");
+         let botonEditarIngreso= document.createElement("button");
+         botonEditarIngreso.value=result[i]["id_ingreso"];
+         botonEditarIngreso.innerHTML="Editar"; 
+
+         botonEditarIngreso.onclick=function(e){
+             $('#exampleModal').modal('show');
+             consultarIngresoID(this.value); 
+         }
+         botonEditarIngreso.className= "btn btn-primary"
+
+         celdaOpcion.appendChild(botonEditarIngreso); 
+         trRegistro.appendChild(celdaOpcion);
 
         curpoTablaIngreso.appendChild(trRegistro); //se traen todos los registros
       }
@@ -200,6 +212,12 @@ function updateIngreso() {
 
   let formData = {
       "habitacion": document.getElementById("habitacion").value,
+      "cama" : document.getElementById("cama").value,
+      "fecha_ingreso" : document.getElementById("fecha_ingreso").value,
+      "fecha_salida" : document.getElementById( "fecha_salida" ).value,
+      "medico" : document.getElementById("medico").value,
+      "paciente" : document.getElementById("paciente").value,
+      "estado": document.getElementById("estado").value
   };
 
 
@@ -243,10 +261,15 @@ function consultarIngresoID(id){
       url:url+id,
       type:"GET",
       success: function(result){
-          
-          document.getElementById("id_ingreso").value=result["id_ingreso"];
+        //  document.getElementById("id_ingreso").value=result["id_ingreso"];
           document.getElementById("habitacion").value=result["habitacion"];
-          
+          document.getElementById("cama").value=result["cama"];
+          document.getElementById("fecha_ingreso").value = result["fecha_ingreso"];
+          document.getElementById("fecha_salida").vaule=result["fecha_salida"];
+          document.getElementById("medico").vaule=result[ "medico"];
+          document.getElementById("paciente").vaule=result[ "paciente"];
+          document.getElementById("estado").vaule=result[ "estado"];
+
       }
   });
 }
