@@ -1,5 +1,6 @@
 package com.sena.hospital2.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,13 @@ implements IingresoService
 	
 	@Override
 	public List<ingreso> filtroIngreso(String filtro) {
-		List<ingreso>ListaIngreso=data.filtroIngreso(filtro);
+		List<ingreso>ListaIngreso=data.findFilterIngreso(filtro);
+		return ListaIngreso;
+	}
+
+	@Override
+	public List<ingreso> filtroFechaIngreso(LocalDateTime fecha_ingreso) {
+		List<ingreso>ListaIngreso=data.filtroFechaIngreso(fecha_ingreso);
 		return ListaIngreso;
 	}
 	

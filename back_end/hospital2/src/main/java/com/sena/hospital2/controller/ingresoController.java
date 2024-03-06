@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sena.hospital2.interfaceService.IingresoService;
 import com.sena.hospital2.model.ingreso;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RequestMapping("/api/v1/ingreso")
@@ -42,6 +44,12 @@ public class ingresoController {
 	@GetMapping("/busquedafiltro/{filtro}")
 	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
 		var ListaIngreso=ingresoService.filtroIngreso(filtro);
+		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
+	}
+
+	@GetMapping("/busquedaFechaIngreso/{fecha_ingreso}")
+	public ResponseEntity<Object> filtroFechaIngreso(@PathVariable LocalDateTime fecha_ingreso){
+		var ListaIngreso=ingresoService.filtroFechaIngreso(fecha_ingreso);
 		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
 	}
 	

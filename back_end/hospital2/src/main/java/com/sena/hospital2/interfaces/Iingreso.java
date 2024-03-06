@@ -1,5 +1,6 @@
 package com.sena.hospital2.interfaces;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -10,15 +11,58 @@ import com.sena.hospital2.model.ingreso;
 @Repository
 
 public interface Iingreso extends CrudRepository<ingreso,String>{
-@Query("SELECT m FROM ingreso m WHERE "
+@Query("SELECT i FROM ingreso i JOIN "
 			
-			+ "m.id_ingreso LIKE %?1% OR "
-			+ "m.habitacion LIKE %?1% OR "
-			+ "m.cama LIKE %?1% OR "
-			+ "m.estado LIKE %?1%")
+			+ "i.medico m "
+			+ " JOIN i.paciente p "
 
 
-	
-	List<ingreso> filtroIngreso(String filtro);
+			+ " WHERE p.id_paciente LIKE %?1% "
+			+ " OR m.id_medico LIKE %?1% "
+
+			+ " OR p.tipo_documento LIKE %?1% "
+			+ " OR m.tipo_documento LIKE %?1% "
+			
+			+ " OR p.numero_documento LIKE %?1% "
+			+ " OR m.numero_documento LIKE %?1% "
+
+			+ " OR p.primer_nombre LIKE %?1% "
+			+ " OR m.primer_nombre LIKE %?1% "
+
+			+ " OR p.segundo_nombre LIKE %?1% "
+			+ " OR m.segundo_nombre LIKE %?1% "
+
+			+ " OR p.primer_apellido LIKE %?1% "
+			+ " OR m.primer_apellido LIKE %?1% "
+
+			+ " OR p.segundo_apellido LIKE %?1% "
+			+ " OR m.segundo_apellido LIKE %?1% "
+
+			+ " OR p.celular LIKE %?1% "
+			+ " OR m.celular LIKE %?1% "
+
+			+ " OR p.direccion LIKE %?1% "
+			+ " OR m.direccion LIKE %?1% "
+			
+			+ " OR p.correo_electronico LIKE %?1% "
+			+ " OR m.correo_electronico LIKE %?1% "
+			
+			+ " OR p.nombre_persona_contacto LIKE %?1% "
+			+ " OR p.celular_persona_contacto LIKE %?1% "
+			
+			+ " OR p.estado LIKE %?1% "
+			+ " OR m.estado LIKE %?1% "
+		)
+
+		
+	List<ingreso> findFilterIngreso(String filtro);
+
+	@Query ("SELECT i FROM ingreso i "
+
+			+ "WHERE i.fecha_ingreso = ?1 "
+			
+			
+			)
+			List<ingreso> filtroFechaIngreso(LocalDateTime fecha_ingreso);
 }
 
