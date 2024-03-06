@@ -22,7 +22,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://127.0.0.1:5500/");
         config.addAllowedOrigin("http://127.0.0.1:51520/");
         config.addAllowedOrigin("http://127.0.0.1:49889/");
-        config.addAllowedOrigin("http://127.0.0.1:63634/");
+        config.addAllowedOrigin("http://127.0.0.1:55869/");
 
         //permitir solicitudes con estos metodos HTTP
         config.addAllowedMethod("GET");
