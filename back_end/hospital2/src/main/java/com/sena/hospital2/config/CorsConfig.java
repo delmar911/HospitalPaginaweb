@@ -15,14 +15,14 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         //permitir solicitudes desde todos los origenes
-        //config.addAllowedOrigin("*");
-        config.addAllowedOrigin("http://127.0.0.1:64107/");
-        config.addAllowedOrigin("http://127.0.0.1:53844/");
-        config.addAllowedOrigin("http://127.0.0.1:54943/");
-        config.addAllowedOrigin("http://127.0.0.1:5500/");
-        config.addAllowedOrigin("http://127.0.0.1:51520/");
-        config.addAllowedOrigin("http://127.0.0.1:49889/");
-        config.addAllowedOrigin("http://127.0.0.1:55869/");
+        config.addAllowedOrigin("*");
+        // config.addAllowedOrigin("http://127.0.0.1:64107/");
+        // config.addAllowedOrigin("http://127.0.0.1:53844/");
+        // config.addAllowedOrigin("http://127.0.0.1:54943/");
+        // config.addAllowedOrigin("http://127.0.0.1:5500/");
+        // config.addAllowedOrigin("http://127.0.0.1:51520/");
+        // config.addAllowedOrigin("http://127.0.0.1:49889/");
+        // config.addAllowedOrigin("http://127.0.0.1:55869/");
 
         //permitir solicitudes con estos metodos HTTP
         config.addAllowedMethod("GET");

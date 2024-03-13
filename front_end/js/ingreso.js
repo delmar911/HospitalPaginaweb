@@ -69,7 +69,8 @@ function listarIngreso() {
 
          botonEditarIngreso.onclick=function(e){
              $('#exampleModal').modal('show');
-             consultarIngresoID(this.value); 
+             consultarIngresoID(this.value);
+             CargarFormulario();
          }
          botonEditarIngreso.className= "btn btn-primary"
 
@@ -140,6 +141,24 @@ function validarNumeroHabitacion(cuadroNumero) {
   let valor = cuadroNumero.value;
   let valido = true;
   if (valor.length < 1 || valor.length > 4) {
+      valido = false;
+  }
+
+  if (valido) {
+      cuadroNumero.className = "form-control is-valid"
+  }
+  else{
+      cuadroNumero.className = "form-control is-invalid"
+  }
+  return valido;
+}
+
+
+function validarNumeroCama(cuadroNumero) {
+    
+  let valor = cuadroNumero.value;
+  let valido = true;
+  if (valor.length < 1 || valor.length > 4) {
       valido = false
   }
 
@@ -151,6 +170,8 @@ function validarNumeroHabitacion(cuadroNumero) {
   }
   return valido;
 }
+
+
 function CargarFormulario() {
   cargarMedico();
   cargarPaciente();
@@ -211,15 +232,17 @@ function updateIngreso() {
   var id_ingreso = document.getElementById("id_ingreso").value;
 
   let formData = {
+
       "habitacion": document.getElementById("habitacion").value,
       "cama" : document.getElementById("cama").value,
       "fecha_ingreso" : document.getElementById("fecha_ingreso").value,
       "fecha_salida" : document.getElementById( "fecha_salida" ).value,
       "medico" : document.getElementById("medico").value,
       "paciente" : document.getElementById("paciente").value,
-      "estado": document.getElementById("estado").value
+      "estado" : document.getElementById("estado").value
+      
   };
-
+  
 
   //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
   if(validarCampos()){
@@ -261,7 +284,7 @@ function consultarIngresoID(id){
       url:url+id,
       type:"GET",
       success: function(result){
-        //  document.getElementById("id_ingreso").value=result["id_ingreso"];
+          document.getElementById("id_ingreso").value=result["id_ingreso"];
           document.getElementById("habitacion").value=result["habitacion"];
           document.getElementById("cama").value=result["cama"];
           document.getElementById("fecha_ingreso").value = result["fecha_ingreso"];
