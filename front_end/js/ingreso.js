@@ -69,8 +69,9 @@ function listarIngreso() {
 
          botonEditarIngreso.onclick=function(e){
              $('#exampleModal').modal('show');
-             consultarIngresoID(this.value);
              CargarFormulario();
+             consultarIngresoID(this.value);
+            
          }
          botonEditarIngreso.className= "btn btn-primary"
 
@@ -229,25 +230,26 @@ function cargarPaciente() {
 }
 
 function updateIngreso() {
-  var id_ingreso = document.getElementById("id_ingreso").value;
-
+  var id_ingreso=document.getElementById("id_ingreso").value;
+  consultarIngresoID(id_ingreso);
   let formData = {
-
-      "habitacion": document.getElementById("habitacion").value,
-      "cama" : document.getElementById("cama").value,
-      "fecha_ingreso" : document.getElementById("fecha_ingreso").value,
-      "fecha_salida" : document.getElementById( "fecha_salida" ).value,
-      "medico" : document.getElementById("medico").value,
-      "paciente" : document.getElementById("paciente").value,
-      "estado" : document.getElementById("estado").value
-      
+   // "id_ingreso" : document.getElementById("id_ingreso").value,
+    "habitacion": document.getElementById("habitacion").value,
+    "cama" : document.getElementById("cama").value,
+    "fecha_ingreso" : document.getElementById("fecha_ingreso").value,
+    "fecha_salida" : document.getElementById( "fecha_salida" ).value,
+    "medico" : document.getElementById("medico").value,
+    "paciente" : document.getElementById("paciente").value,
+    "estado" : document.getElementById("estado").value
+    
   };
+ 
   
 
   //Cuando estamos actualizando los datos, y lo hacemos correctamente Aparecerá la Alerta EXCELENTE *****
   if(validarCampos()){
   $.ajax({
-      url: url + id_ingreso,
+      url: url+id_ingreso,
       type: "PUT",
       data: formData,
       success: function(result) {
@@ -260,13 +262,15 @@ function updateIngreso() {
           var modal = document.getElementById("exampleModal"); 
           modal.style.display = "hide";
           
+          //CargarFormulario();
           listarIngreso(); //Lista los médicos después de actualizar
       },
       error: function(error) {
           Swal.fire("Error", "Error al guardar", "error");
       }  
   });
-  }else{
+  }
+  else{
       Swal.fire({
           title: "Error!",
           text: "complete los campos correctamente",
@@ -278,22 +282,35 @@ function updateIngreso() {
 
 /* metodo para obtener los datos en el modal de actualizar*/ 
 //1.Crear petición que traiga la información del medico por id
-function consultarIngresoID(id){
+function consultarIngresoID(id_ingreso){
   //alert(id);
   $.ajax({
-      url:url+id,
+      url:url+id_ingreso,
       type:"GET",
       success: function(result){
           document.getElementById("id_ingreso").value=result["id_ingreso"];
           document.getElementById("habitacion").value=result["habitacion"];
           document.getElementById("cama").value=result["cama"];
           document.getElementById("fecha_ingreso").value = result["fecha_ingreso"];
-          document.getElementById("fecha_salida").vaule=result["fecha_salida"];
-          document.getElementById("medico").vaule=result[ "medico"];
-          document.getElementById("paciente").vaule=result[ "paciente"];
-          document.getElementById("estado").vaule=result[ "estado"];
+          document.getElementById("fecha_salida").value=result["fecha_salida"];
+          document.getElementById("medico").value=result[ "medico"]["id_medico"];
+          document.getElementById("paciente").value=result[ "paciente"]["id_paciente"];
+          document.getElementById("estado").value=result[ "estado"];
 
       }
   });
 }
+function filtro(){
+  //alert(id);
+  $.ajax({
+      url:url+busquedafiltro,
+      type:"GET",
+      success: function(result){
+          //document.getElementById("id_ingreso").value=result["id_ingreso"];
+         
+
+      }
+  });
+}
+
 

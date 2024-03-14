@@ -306,10 +306,10 @@ if(validarCampos()){
 
 /* metodo para obtener los datos en el modal de actualizar*/ 
 //1.Crear petición que traiga la información del medico por id
-function consultarPacienteID(id){
+function consultarPacienteID(id_paciente){
   //alert(id);
   $.ajax({
-      url:url+id,
+      url:url+id_paciente,
       type:"GET",
       success: function(result){
         

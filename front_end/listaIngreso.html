@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
         <link rel="stylesheet" href="css/estilos.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 
     
@@ -110,7 +111,7 @@
             <div class="col-4">
                 <div class="input-group mb-3 ">
                 <input type="text" class="form-control" placeholder="Buscar Ingreso" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="consultarIngresoID();">Buscar</button>
+                <button class="btn btn-outline-success" type="button" id="button-addon2" onclick="filtro();">Buscar</button>
                 </div>
             </div>   
         </div>
@@ -154,6 +155,7 @@
                                   step="1"
                                  
                                 />
+                                <input type="hidden" id="id_ingreso" step="1">
                              </div>
                               <div class="col-6">
                                 <label for="fecha_salida" class="form-label">Fecha de Salida</label>
@@ -164,6 +166,7 @@
                                   id="fecha_salida"
                                   step="1"
                                   />
+                                 
                                   <!-- onfocusout="validarNumeroIdentificacion(this);"  -->
                               </div>
                               <div class="col-6">
