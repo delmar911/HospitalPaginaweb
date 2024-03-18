@@ -64,5 +64,13 @@ public interface Iingreso extends CrudRepository<ingreso,String>{
 			
 			)
 			List<ingreso> filtroFechaIngreso(LocalDateTime fecha_ingreso);
+
+		//para no poder ingresar  una persona que ya existe en la base de datos
+			@Query ("SELECT i FROM ingreso i JOIN i.paciente p "
+					+"WHERE p.id_paciente=?1 AND i.estado='Activo' "
+			
+			
+			)
+			List<ingreso> filtroEstado(String id_paciente);
 }
 

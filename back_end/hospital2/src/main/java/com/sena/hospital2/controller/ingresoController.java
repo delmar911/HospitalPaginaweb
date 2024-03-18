@@ -16,6 +16,7 @@ import com.sena.hospital2.interfaceService.IingresoService;
 import com.sena.hospital2.model.ingreso;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,6 +33,12 @@ public class ingresoController {
 	public ResponseEntity<Object> save(
 			@ModelAttribute("ingreso") ingreso ingreso
 			){
+				// condicion para cuando ya exista el  registro 
+				List<ingreso> listaPacienteActivo=ingresoService.filtroEstado(ingreso.getPaciente().getId_paciente());
+			if(listaPacienteActivo.size()!=0){
+				//ya tiene un registro activo
+				return new ResponseEntity<>("El paciente ya tiene un ingreso activo",HttpStatus.BAD_REQUEST);		
+			}
 		ingresoService.save(ingreso);
 		return new ResponseEntity<>(ingreso,HttpStatus.OK);
 	}

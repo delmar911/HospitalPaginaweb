@@ -1,8 +1,13 @@
 //se almacena la url de la api
 let url="http://localhost:8082/api/v1/medico/";
 function listarMedico() {
+    var busqueda = document.getElementById("buscar").value;
+    var urlBusqueda = url;
+    if (busqueda!=""){
+        urlBusqueda+="busquedafiltro/"+busqueda;
+    }   
     $.ajax({
-        url:url,
+        url:urlBusqueda,
         type: "GET",
         success: function(result){//success: funcion que se ejecuta cusndo la peticion tiene exito
             console.log(result);
@@ -87,6 +92,7 @@ function listarMedico() {
             alert("Error en la peticion ${error}");
         }
     })
+ 
 }
 
 //Paso para crear el registro de un médico ****

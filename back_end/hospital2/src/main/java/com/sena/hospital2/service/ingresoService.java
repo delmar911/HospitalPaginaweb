@@ -43,12 +43,19 @@ implements IingresoService
 		return ListaIngreso;
 	}
 
+    // la variable que almacena los registros
+	@Override
+	public List<ingreso> filtroEstado(String id_paciente) {
+		List<ingreso>ListaIngreso=data.filtroEstado(id_paciente);
+		return ListaIngreso;
+	}
+
 	@Override
 	public List<ingreso> filtroFechaIngreso(LocalDateTime fecha_ingreso) {
 		List<ingreso>ListaIngreso=data.filtroFechaIngreso(fecha_ingreso);
 		return ListaIngreso;
 	}
-	
+
 	@Override
 	public Optional<ingreso> findOne(String id) {
 		Optional<ingreso> ingreso=data.findById(id);

@@ -1,8 +1,14 @@
 //se almacena la url de la api
 let url = "http://localhost:8082/api/v1/ingreso/";
 function listarIngreso() {
+  var busqueda = document.getElementById("buscar").value;
+  var urlBusqueda = url;
+  if (busqueda!=""){
+      urlBusqueda+="busquedafiltro/"+busqueda;
+  }
+ 
   $.ajax({
-    url: url,
+    url: urlBusqueda,
     type: "GET",
     success: function (result) {
       //success: funcion que se ejecuta cusndo la peticion tiene exito
@@ -85,6 +91,7 @@ function listarIngreso() {
       alert("Error en la peticion ${error}");
     },
   });
+  
 }
 //que es Cors
 function registrarIngreso() {
@@ -125,7 +132,7 @@ function registrarIngreso() {
       },
       error: function (error) {
        // alert("error al guardar".error);
-        Swal.fire("Error", "Error al guardar", "error");
+        Swal.fire("Error", "Error al guardar "+error.responseText, "error");
       },
     });
   } else {
@@ -177,7 +184,7 @@ function CargarFormulario() {
   cargarMedico();
   cargarPaciente();
 }
-
+//funcion para traer los medicos
 function cargarMedico() {
   let urlMedico = "http://localhost:8082/api/v1/medico/";
 
@@ -203,6 +210,7 @@ function cargarMedico() {
     },
   });
 }
+//funcion para traer los pacientes
 function cargarPaciente() {
   let urlpaciente = "http://localhost:8082/api/v1/paciente/";
 
