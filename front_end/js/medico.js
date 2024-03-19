@@ -138,7 +138,7 @@ function registrarMedico() {
             // window.location.href= "http://127.0.0.1:5500/front_end/pacienteRegistro.html";
           },
           error: function(error){
-            alert("error al guardar".error);
+            Swal.fire("Error", "Error al guardar "+error.responseText, "error");
           }
         });
       }else{

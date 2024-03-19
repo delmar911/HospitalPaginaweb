@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.sena.hospital2.model.medico;
 import com.sena.hospital2.model.paciente;
 
 @Repository
@@ -28,4 +29,10 @@ public interface Ipaciente extends CrudRepository<paciente,String> {
 			+ "m.estado LIKE %?1%")
 	
 	List<paciente> filtroPaciente(String filtro);
+	@Query ("SELECT p FROM paciente p  "
+					+"WHERE  p.numero_documento=?1  "
+			
+			
+			)
+			List<paciente>filtroCedulaPaciente(String numero_documento);
 }

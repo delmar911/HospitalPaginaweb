@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sena.hospital2.interfaceService.ImedicoService;
 import com.sena.hospital2.interfaces.Imedico;
+import com.sena.hospital2.model.ingreso;
 import com.sena.hospital2.model.medico;
 
 @Service
@@ -41,7 +42,14 @@ implements ImedicoService
 		List<medico>ListaMedico=data.filtroMedico(filtro);
 		return ListaMedico;
 	}
-	
+
+	// la variable que almacena los registros
+	@Override
+	public List<medico> filtroCedulaMedico(String numero_documento ) {
+		List<medico>ListaMedico=data.filtroCedulaMedico(numero_documento);
+		return ListaMedico;
+	}
+	 
 	
 	@Override
 	public Optional<medico> findOne(String id) {
@@ -55,6 +63,7 @@ implements ImedicoService
 		return 1;
 	}
 
+	
 	
 	
 }

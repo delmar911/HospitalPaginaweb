@@ -1,5 +1,7 @@
 package com.sena.hospital2.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sena.hospital2.interfaceService.IpacienteService;
+import com.sena.hospital2.model.medico;
 import com.sena.hospital2.model.paciente;
 
 
@@ -31,6 +34,12 @@ public class pacienteController {
 	public ResponseEntity<Object> save(
 			@ModelAttribute("paciente") paciente paciente
 			){
+				// condicion para cuando ya exista el  registro 
+				List<paciente>listaPacienteValidacion=pacienteService.filtroCedulaPaciente(paciente.getNumero_documento());
+			if(listaPacienteValidacion.size()!=0){
+				//ya tiene un registro activo
+				return new ResponseEntity<>("El paciente ya se encuentra registrado",HttpStatus.BAD_REQUEST);		
+			}	
 		pacienteService.save(paciente);
 		return new ResponseEntity<>(paciente,HttpStatus.OK);
 	}

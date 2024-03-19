@@ -12,6 +12,7 @@ public interface ImedicoService {
 	public String save (medico medico);
 	public List<medico>findAll();
 	public List<medico> filtroMedico(String filtro);
+	public List<medico> filtroCedulaMedico(String numero_documento);
 	public Optional<medico> findOne(String id);
 	public int delete(String id);
 }

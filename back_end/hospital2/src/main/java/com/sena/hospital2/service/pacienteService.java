@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sena.hospital2.interfaceService.IpacienteService;
 import com.sena.hospital2.interfaces.Ipaciente;
+import com.sena.hospital2.model.medico;
 import com.sena.hospital2.model.paciente;
 
 @Service
@@ -53,6 +54,12 @@ implements IpacienteService
 	public int delete(String id) {
 		data.deleteById(id);
 		return 1;
+	}
+
+	@Override
+	public List<paciente>filtroCedulaPaciente(String numero_documento ) {
+		List<paciente>ListaPaciente=data.filtroCedulaPaciente(numero_documento);
+		return ListaPaciente;
 	}
 	
 }
