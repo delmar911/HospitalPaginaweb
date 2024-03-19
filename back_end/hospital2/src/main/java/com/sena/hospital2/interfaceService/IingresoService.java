@@ -15,6 +15,7 @@ public interface IingresoService {
 	public List<ingreso>findAll();
 	public List<ingreso> filtroIngreso(String filtro);
 	public List<ingreso> filtroEstado(String id_paciente);
+	public List<ingreso> filtroCama(String cama, String habitacion);
 	public List<ingreso> filtroFechaIngreso(LocalDateTime fecha_ingreso);
 	public Optional<ingreso> findOne(String id);
 	public int delete(String id);

@@ -39,7 +39,7 @@ implements IingresoService
 	
 	@Override
 	public List<ingreso> filtroIngreso(String filtro) {
-		List<ingreso>ListaIngreso=data.findFilterIngreso(filtro);
+		List<ingreso>ListaIngreso=data.filtroIngreso(filtro);
 		return ListaIngreso;
 	}
 
@@ -47,6 +47,12 @@ implements IingresoService
 	@Override
 	public List<ingreso> filtroEstado(String id_paciente) {
 		List<ingreso>ListaIngreso=data.filtroEstado(id_paciente);
+		return ListaIngreso;
+	}
+
+	@Override
+	public List<ingreso> filtroCama (String cama, String habitacion) {
+		List<ingreso>ListaIngreso=data.filtroCama(cama, habitacion);
 		return ListaIngreso;
 	}
 

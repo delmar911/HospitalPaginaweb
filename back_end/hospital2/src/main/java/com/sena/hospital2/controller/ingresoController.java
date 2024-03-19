@@ -37,7 +37,13 @@ public class ingresoController {
 				List<ingreso> listaPacienteActivo=ingresoService.filtroEstado(ingreso.getPaciente().getId_paciente());
 			if(listaPacienteActivo.size()!=0){
 				//ya tiene un registro activo
-				return new ResponseEntity<>("El paciente ya tiene un ingreso activo",HttpStatus.BAD_REQUEST);		
+				return new ResponseEntity<>("el paciente ya tiene un ingreso activo",HttpStatus.BAD_REQUEST);		
+			}
+
+			List <ingreso> listaCamaIngresos=ingresoService.filtroCama(ingreso.getCama(), ingreso.getHabitacion());
+			if(listaCamaIngresos.size()!=0){
+				//ya tiene un registro activo
+				return new ResponseEntity<>("la cama y la habitación ya se encuentran ocupada",HttpStatus.BAD_REQUEST);		
 			}
 		ingresoService.save(ingreso);
 		return new ResponseEntity<>(ingreso,HttpStatus.OK);
@@ -49,7 +55,7 @@ public class ingresoController {
 	}
 	
 	@GetMapping("/busquedafiltro/{filtro}")
-	public ResponseEntity<Object> findFiltro(@PathVariable String filtro){
+	public ResponseEntity<Object> filtroIngreso(@PathVariable String filtro){
 		var ListaIngreso=ingresoService.filtroIngreso(filtro);
 		return new ResponseEntity<>(ListaIngreso, HttpStatus.OK);
 	}

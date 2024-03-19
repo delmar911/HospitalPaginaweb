@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sena.hospital2.interfaceService.IpacienteService;
-import com.sena.hospital2.model.medico;
 import com.sena.hospital2.model.paciente;
 
 

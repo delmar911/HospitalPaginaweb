@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.sena.hospital2.interfaceService.ImedicoService;
 import com.sena.hospital2.interfaces.Imedico;
-import com.sena.hospital2.model.ingreso;
 import com.sena.hospital2.model.medico;
 
 @Service

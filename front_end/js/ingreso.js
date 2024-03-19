@@ -124,7 +124,7 @@ function registrarIngreso() {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Se ha registrado correctamente!",
+        title: "¡Se ha registrado correctamente!",
         showConfirmButton: false,
         timer: 1500
       });
@@ -132,11 +132,11 @@ function registrarIngreso() {
       },
       error: function (error) {
        // alert("error al guardar".error);
-        Swal.fire("Error", "Error al guardar "+error.responseText, "error");
+        Swal.fire("Alerta", "¡Error al guardar! "+error.responseText, "warning");
       },
     });
   } else {
-    Swal.fire("Error", "Faltan campos por llenar!", "error");
+    Swal.fire("Error", "¡Faltan campos por llenar!", "error");
   }
 }
 function validarCampos() {

@@ -55,7 +55,7 @@ public interface Iingreso extends CrudRepository<ingreso,String>{
 		)
 
 		
-	List<ingreso> findFilterIngreso(String filtro);
+	List<ingreso> filtroIngreso(String filtro);
 
 	@Query ("SELECT i FROM ingreso i "
 
@@ -72,5 +72,12 @@ public interface Iingreso extends CrudRepository<ingreso,String>{
 			
 			)
 			List<ingreso> filtroEstado(String id_paciente);
+
+			@Query ("SELECT i FROM ingreso i "
+
+			+ "WHERE i.cama = ?1 AND i.habitacion = ?2 AND i.estado='Activo' "
+
+			)
+			List<ingreso> filtroCama(String cama, String habitacion);
 }
 
