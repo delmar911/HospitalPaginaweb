@@ -71,19 +71,19 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pacientes</a>
                                 <div class="dropdown-menu bg-light m-0">                                
-                                    <a href="pacienteRegistro.html" class="dropdown-item">Registro</a>
-                                    <a href="listaPaciente.html" class="dropdown-item">Lista Pacientes</a>
+                                    <a href="pacienteRegistro.html" class="dropdown-item">Registro de pacientes</a>
+                                    <a href="listaPaciente.html" class="dropdown-item">Lista de Pacientes</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a href="medicos.html" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Medicos</a>
+                                <a href="medicos.html" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Médicos</a>
                                 <div class="dropdown-menu bg-light m-0">
-                                    <a href="medicoRegistro.html" class="dropdown-item">Registro</a>
-                                    <a href="listaMedicos.html" class="dropdown-item">Lista Medicos</a>
+                                    <a href="medicoRegistro.html" class="dropdown-item">Registro de médicos</a>
+                                    <a href="listaMedicos.html" class="dropdown-item">Lista de médicos</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Ingreso</a>
+                                <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Ingresos</a>
                                 <div class="dropdown-menu bg-light m-0">
                                     <a href="ingresoRegistro.html" class="dropdown-item">Registro de Ingresos</a>
                                     <a href="listaIngreso.html" class="dropdown-item">Lista de Ingresos</a>
@@ -105,7 +105,7 @@
         <h2 class="registrarPacienteT">Lista de Pacientes</h2>
 
         <!-- star table -->
-        <div class="row" style="margin-right: 0px;">
+        <div class="row" style="margin-right: 0px; justify-content: center;">
             <div class="col-4">
                 <div class="input-group mb-3 ">
                 <input type="text" class="form-control" placeholder="Buscar Paciente" id="buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -116,16 +116,16 @@
         <table class="table table-hover">
             <thead class="table-light">
                 <tr>
-                    <th scope="col">Codigo  de paciente</th>
-                    <th scope="col">tipo Identificación</th>
-                    <th scope="col">NO° Identificación</th>
+                    <th scope="col">Código  de paciente</th>
+                    <th scope="col">Tipo Identificación</th>
+                    <th scope="col">N° Identificación</th>
                     <th scope="col">Primer Nombre</th>
                     <th scope="col">Segundo Nombre</th>
                     <th scope="col">Primer Apellido</th>
                     <th scope="col">Segundo Apellido</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Correo </th>
-                    <th scope="col">Direccion </th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo electrónico </th>
+                    <th scope="col">Dirección </th>
                     <th scope="col">Nombre de persona de contacto</th>
                     <th scope="col">Celular de persona de contacto</th>
                     <th scope="col">Estado</th>
@@ -149,9 +149,9 @@
              <div class="row" >
 
                       <div class="col-6">
-                        <label for="tipo_documento" class="form-label">Tipo identificacion</label>
+                        <label for="tipo_documento" class="form-label">Tipo identificación</label>
                         <select class="form-select" id="tipo_documento" focusout="validarTipo_documento(this);">
-                            <option selected disabled value="">Selecciona una Opcion</option>
+                            <option selected disabled value="">Selecciona una Opción</option>
                             <option value="RC">Registro Civil</option>
                             <option value="TI">Tarjeta de Identidad</option>
                             <option value="CC">Cedula de Ciudadanía</option>
@@ -195,7 +195,7 @@
                           <input type="text" class="form-control" name="correo_electronico" id="correo_electronico" >
                         </div>
                         <div class="col-6">
-                          <label for="direccion" class="form-label">Direccion</label>
+                          <label for="direccion" class="form-label">Dirección</label>
                           <input type="text" class="form-control" name="direccion" id="direccion" onfocusout="validarDireccion(this);" >
                         </div>
                         <div class="col-6">

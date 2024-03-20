@@ -37,12 +37,12 @@
                         <span>+310 301 6789</span>
                     </div>
                 </div>
-                <a href="index.html" class="h1 text-white mb-0" style="font-size:  50px;  font-family: Roboto sans-serif ; text-decoration: none">CLINICA<span class="text-dark">SALUDVIVA</span></a>
+                <a href="index.html" class="h1 text-white mb-0" style="font-size:  50px;  font-family: Roboto sans-serif ; text-decoration: none">CLINICA <span class="text-dark"> SALUDVIVA</span></a>
                 <div class="d-flex">
                     <i class="fa-regular fa-envelope" style="color: #fdfeff; font-size: 30px;"></i>
                     <div class="ms-3">
                         <h6 class="text-white mb-0">Enviar correo ahora</h6>
-                        <span>saludviva@gmail.com</span>
+                        <span>saludvivagmail.com</span>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
      <!-- Navbar Start "inicio barra-navegacion" -->
      <div class="container-fluid sticky-top">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-3" style="border-radius: 70px; background-color: rgb(255, 255, 255);">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-lg-0 px-lg-3" style="border-radius: 70px;">
                 <a href="index.html" class="navbar-brand d-lg-none">
                     <h1 class="text-white m-0"> CLINICA <span class="text-dark"> SALUDVIVA</span></h1>
                 </a>
@@ -60,13 +60,28 @@
                     data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse" >
-                    <div class="navbar-nav" >
-                        <a href="index.html" class="nav-item nav-link active" >Home</a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="servicios.html" class="nav-item nav-link">Servicios</a>
-                        <!-- <a href="pacientes.html" class="nav-item nav-link">Pacientes</a> -->
-                        <a href="medicos.html" class="nav-item nav-link">Medicos</a>
-                        <a href="contacto.html" class="nav-item nav-link">Contacto</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pacientes</a>
+                            <div class="dropdown-menu bg-light m-0">                                
+                                <a href="pacienteRegistro.html" class="dropdown-item">Registro de pacientes</a>
+                                <a href="listaPaciente.html" class="dropdown-item">Lista de Pacientes</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                        <a href="medicos.html" class="nav-item nav-link">Médicos</a>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle"data-bs-toggle="dropdown">Ingresos</a>
+                        <div class="dropdown-menu bg-light m-0">
+                            <a href="ingresoRegistro.html" class="dropdown-item">Registro de Ingresos</a>
+                            <a href="listaIngreso.html" class="dropdown-item">Lista de Ingresos</a>
+                        </div>
+                    </div>
+                    <a href="contacto.html" class="nav-item nav-link">Contacto</a>
                     </div>
                     <div class="ms-auto d-none d-lg-flex">
                         <a class="btn btn-sm-square btn-primary ms-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -84,7 +99,7 @@
 <div class="container-fluid py-5">
     <div class="container py-5">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="display-6 mb-3">¿Tienes alguna duda? Sientete libre de contactarnos</h1>
+            <h1 class="display-6 mb-3">¿Tienes alguna duda? Siéntete libre de contactarnos</h1>
             <p class="mb-5"> ¡Estamos aquí para ayudarte! Cualquier duda que tengas. 
                               Nuestro equipo de expertos está listo para proporcionarte la asistencia que necesitas."</p>
         </div>
@@ -95,7 +110,7 @@
                         <i class="fa-solid fa-mobile-screen" style="color: #000000; text-align: center;"></i>
                     </div>
                     <div class="ms-3">
-                        <h5 class="text-white">LLamanos</h5>
+                        <h5 class="text-white">LLámanos</h5>
                         <h2 class="text-white mb-0">+310 301 6789</h2>
                     </div>
                 </a>
@@ -106,7 +121,7 @@
                         <i class="fa-regular fa-envelope" style="color: #0c0d0d;"></i>
                     </div>
                     <div class="ms-3">
-                        <h5 class="text-white">Enviamos un correo electronico</h5>
+                        <h5 class="text-white">Envíanos un correo electrónico</h5>
                         <h2 class="text-white mb-0">saludvida@example.com</h2>
                     </div>
                 </a>
@@ -114,35 +129,31 @@
         </div>
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                <p class="mb-4">En SaludViva SAS, creemos en la importancia de la comunidad y la colaboración. Nuestro espacio en línea es mucho más que un sitio web: es un lugar para compartir ideas, experiencias y puntos de vista. Queremos escucharte.
+
+                    Ya sea que tengas preguntas, sugerencias o simplemente quieras compartir tus pensamientos, ¡este es el lugar para hacerlo!</a></p>
                 <form>
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                <label for="name">Your Name</label>
+                                <label for="name">Tu Nombre</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Your Email</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Subject</label>
+                                <label for="email">Correo electronico</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
-                                <label for="message">Message</label>
+                                <label for="message">Mensaje</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                            <button class="btn btn-primary py-3 px-5" type="submit">Enviar Mensaje</button>
                         </div>
                     </div>
                 </form>
