@@ -307,6 +307,25 @@ function consultarMedicoID(id){
         }
     });
 }
+function limpiar(){
+    document.getElementById("numero_documento").className="form-control";
+    document.getElementById("primer_nombre").className="form-control";
+    document.getElementById("primer_apellido").className="form-control";
+    document.getElementById("celular").className="form-control";
+    document.getElementById("correo_electronico").className="form-control";
+    document.getElementById("direccion").className="form-control";
+    document.getElementById("estado").className="form-control";
+    document.getElementById("tipo_documento").value = "";
+    document.getElementById("numero_documento").value = "";
+    document.getElementById("primer_nombre").value = "";
+    document.getElementById("segundo_nombre").value = "";
+    document.getElementById("primer_apellido").value = "";
+    document.getElementById("segundo_apellido").value = "";
+    document.getElementById("celular").value = "";
+    document.getElementById("correo_electronico").value = "";
+    document.getElementById("direccion").value = "";
+    document.getElementById("estado").value="";
+}
 
 
 

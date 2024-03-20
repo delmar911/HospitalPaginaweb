@@ -320,5 +320,22 @@ function filtro(){
       }
   });
 }
-
+function limpiar(){
+  document.getElementById("habitacion").className="form-control";
+  document.getElementById("cama").className="form-control";
+  document.getElementById("fecha_ingreso").className="form-control";
+  document.getElementById("fecha_salida").className="form-control";
+  document.getElementById("medico").className="form-control";
+  document.getElementById("paciente").className="form-control";
+  document.getElementById("estado").className="form-control";
+ document.getElementById("habitacion").value="";
+ document.getElementById("cama").value="";
+ document.getElementById("fecha_ingreso").value="";
+ document.getElementById("fecha_salida").value="";
+ document.getElementById("medico").value="";
+ document.getElementById("paciente").value="";
+ document.getElementById("estado").value="";
+ 
+ 
+}
 
