@@ -18,7 +18,7 @@ public class medico {
 	@Column(name = "tipo_documento", nullable = false, length = 2)
 	private String tipo_documento;
 
-	@Column(name = "numero_documento", nullable = false, length = 40)
+	@Column(name = "numero_documento", nullable = false, length = 10)
 	private String numero_documento;
 	
 	
@@ -34,7 +34,7 @@ public class medico {
 	@Column(name = "segundo_apellido", nullable = true, length = 30)
 	private String segundo_apellido;
 	
-	@Column(name = "celular", nullable = false, length = 50)
+	@Column(name = "celular", nullable = false, length = 10)
 	private String celular;
 
 	@Column(name = "correo_electronico", nullable = false, length = 255)
