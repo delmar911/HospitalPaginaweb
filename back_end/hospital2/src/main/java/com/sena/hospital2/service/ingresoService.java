@@ -67,10 +67,11 @@ implements IingresoService
 		Optional<ingreso> ingreso=data.findById(id);
 		return ingreso;
 	}
-
 	@Override
-	public int delete(String id) {
-		data.deleteById(id);
-		return 1;
+	public int delete(String id_ingreso) {
+		var ingreso=data.findById(id_ingreso).get();
+		ingreso.setEstado("Inactivo"); 
+        data.save(ingreso); 
+		return 0;
 	}
 }

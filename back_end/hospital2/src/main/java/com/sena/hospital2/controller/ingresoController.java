@@ -74,10 +74,11 @@ public class ingresoController {
 			
 		}
 		
-		@DeleteMapping("/eliminarPermanente/{id}")
-		public ResponseEntity<Object> delete(@PathVariable String id){
-			 ingresoService.delete(id);
-					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
+		//eliminado logico
+		@DeleteMapping("/{id_ingreso}")
+		public ResponseEntity<Object> delete(@PathVariable String id_ingreso){
+			ingresoService.delete(id_ingreso);
+					return new ResponseEntity<>("Registro Deshabilitado",HttpStatus.OK);
 		}
 		@PutMapping("/{id}")
 		public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("ingreso")ingreso ingresoUpdate){

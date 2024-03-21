@@ -56,10 +56,17 @@ implements ImedicoService
 		return medico;
 	}
 
+	// @Override
+	// public int delete(String id) {
+	// 	data.deleteById(id);
+	// 	return 1;
+	// }
 	@Override
-	public int delete(String id) {
-		data.deleteById(id);
-		return 1;
+	public int delete(String id_medico) {
+		var medico=data.findById(id_medico).get();
+		medico.setEstado("Inactivo"); 
+        data.save(medico); 
+		return 0;
 	}
 
 	

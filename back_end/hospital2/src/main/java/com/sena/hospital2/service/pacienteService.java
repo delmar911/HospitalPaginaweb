@@ -64,7 +64,7 @@ implements IpacienteService
 	@Override
 	public int delete(String id_paciente) {
 		var paciente=data.findById(id_paciente).get();
-		paciente.setEstado("inactivo"); 
+		paciente.setEstado("Inactivo"); 
         data.save(paciente); 
 		return 0;
 	}

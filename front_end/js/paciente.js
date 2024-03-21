@@ -29,8 +29,7 @@ function listarPaciente() {
                 let celdaNombrePersonaContacto = document.createElement("td");
                 let celdaCelularPersonaContacto = document.createElement("td");
                 let celdaEstado = document.createElement("td");
-                // let celdaEditar = document.createElement("td");
-                
+
                 //almacenamos en valor
                 
                 celdaId.innerText = result[i]["id_paciente"];
@@ -46,15 +45,6 @@ function listarPaciente() {
                 celdaNombrePersonaContacto.innerText = result[i]["nombrePersonaContacto"];
                 celdaCelularPersonaContacto.innerText = result[i][ "celularPersonaContacto"];
                 celdaEstado.innerText = result[i]["estado"];
-
-              //   let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</buttonco>";
-              //   let button = document.createElement('button');
-              //   button.classList.add('btn', 'btn-primary');
-              //   button.setAttribute('data-bs-toggle', 'modal');
-              //   button.setAttribute('data-bs-target', '#exampleModal');
-              //   button.setAttribute('id', result[i]["id_paciente"]);
-              //   button.innerText = 'Editar';
-              // celdaEditar.appendChild(button);
                 
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
@@ -102,8 +92,8 @@ function listarPaciente() {
                 }
                 celdaOpcion.appendChild(botonDeshabilitarPaciente); 
                 trRegistro.appendChild(celdaOpcion)
-
             }
+
         },
         error:function(error){
             alert("Error en la peticion ${error}");
@@ -374,8 +364,8 @@ function limpiar(){
 // funcion  de deshabilitar paciente
 function desahiblitarPaciente(id){
   swal.fire({
-    title: '¿ Estas seguro?',
-    text: "Esta opcion no tiene marcha atras",
+    title: '¿Estás seguro?',
+    text: "Esta opción no tiene marcha atrás",
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor:'#3085d6',
@@ -398,7 +388,7 @@ function desahiblitarPaciente(id){
         error: function(error){
           Swal.fire(
             'Error',
-            'no se puede deshabilitar el registro ',
+            'No se puede deshabilitar el registro ',
             'Error',
           );
         }

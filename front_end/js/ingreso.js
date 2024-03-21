@@ -25,7 +25,7 @@ function listarIngreso() {
         let celdaFechaSalida = document.createElement("td");
         let celdaIdMedico = document.createElement("td");
         let celdaIdPaciente = document.createElement("td");
-        let celdaEstado = document.createElement("td");
+        let celdaEstado = document.createElement("td"); 
         let celdaEditar = document.createElement("td");
 
         //almacenamos en valor
@@ -84,8 +84,19 @@ function listarIngreso() {
          celdaOpcion.appendChild(botonEditarIngreso); 
          trRegistro.appendChild(celdaOpcion);
 
-        curpoTablaIngreso.appendChild(trRegistro); //se traen todos los registros
-      }
+         curpoTablaIngreso.appendChild(trRegistro); //se traen todos los registros
+          //boton desahiblitar- la funcion de deshabilitar se encuentra abajo 
+          let botonDeshabilitaringreso= document.createElement("button");
+          botonDeshabilitaringreso.innerHTML="<i class='fa-solid fa-trash'></i>"; 
+          botonDeshabilitaringreso.className="btn btn-primary"; 
+
+          let ingresoIdParaDeshabilitar= result[i]["id_ingreso"]; 
+          botonDeshabilitaringreso.onclick=function(){
+            desahiblitaringreso(ingresoIdParaDeshabilitar);
+          }
+          celdaOpcion.appendChild(botonDeshabilitaringreso); 
+          trRegistro.appendChild(celdaOpcion)
+        }
     },
     error: function (error) {
       alert("Error en la peticion ${error}");
@@ -335,7 +346,40 @@ function limpiar(){
  document.getElementById("medico").value="";
  document.getElementById("paciente").value="";
  document.getElementById("estado").value="";
- 
- 
+}
+// funcion  de deshabilitar ingreso
+function desahiblitaringreso(id){
+  swal.fire({
+    title: '¿Estás seguro?',
+    text: "Esta opción no tiene marcha atrás",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor:'#3085d6',
+    cancelButtonColor:'#d33',
+    confirmButtonText:'sí, deshabilitar!',
+
+  }).then((result)=>{
+    if (result.isConfirmed){
+      $.ajax({
+        url: url +id,
+        type: "DELETE",
+        success: function(result){
+          swal.fire(
+            'Deshabilitado',
+            'El registro ha sido deshabilitado ',
+            'success'
+          );
+          listarIngreso();//recarga la lista de ingresos
+        },
+        error: function(error){
+          Swal.fire(
+            'Error',
+            'No se puede deshabilitar el registro ',
+            'Error',
+          );
+        }
+      });
+    }
+  });
 }
 

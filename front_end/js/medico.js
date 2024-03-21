@@ -42,18 +42,6 @@ function listarMedico() {
                 celdaCorreo.innerText = result[i]["correo_electronico"];
                 celdaDireccion.innerText = result[i]["direccion"];
                 celdaEstado.innerText = result[i]["estado"];
-
-            
-
-                // let buttonHTML = "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Editar</button>";
-                // let button = document.createElement('button');
-                // button.classList.add('btn', 'btn-primary');
-                // button.setAttribute('data-bs-toggle', 'modal');
-                // button.setAttribute('data-bs-target', '#exampleModal');
-                // button.setAttribute('id', result[i]["id_medico"]);
-                // button.innerText = 'Editar' ;
-                // celdaEditar.appendChild(button);
-                
                 
                 //agregando a los td a su respectivo th y agregandolos a la fila
 
@@ -86,6 +74,17 @@ function listarMedico() {
 
                 curpoTablaMedico.appendChild(trRegistro);//se traen todos los registros
 
+                 //boton desahiblitar- la funcion de deshabilitar se encuentra abajo 
+                 let botonDeshabilitarmedico= document.createElement("button");
+                 botonDeshabilitarmedico.innerHTML="<i class='fa-solid fa-trash'></i>"; 
+                 botonDeshabilitarmedico.className="btn btn-primary"; 
+ 
+                 let medicoIdParaDeshabilitar= result[i]["id_medico"]; 
+                 botonDeshabilitarmedico.onclick=function(){
+                   desahiblitarmedico(medicoIdParaDeshabilitar);
+                 }
+                 celdaOpcion.appendChild(botonDeshabilitarmedico); 
+                 trRegistro.appendChild(celdaOpcion)
             }
         },
         error:function(error){
@@ -135,7 +134,7 @@ function registrarMedico() {
               text: "Su registro se guardó correctamente",
               icon: "success"
             });
-            // window.location.href= "http://127.0.0.1:5500/front_end/pacienteRegistro.html";
+            // window.location.href= "http://127.0.0.1:5500/front_end/medicoRegistro.html";
           },
           error: function(error){
             Swal.fire("Error", "Error al guardar "+error.responseText, "error");
@@ -326,6 +325,41 @@ function limpiar(){
     document.getElementById("direccion").value = "";
     document.getElementById("estado").value="";
 }
+// funcion  de deshabilitar medico
+function desahiblitarmedico(id){
+    swal.fire({
+      title: '¿Estás seguro?',
+      text: "Esta opción no tiene marcha atrás",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor:'#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText:'si, deshabilitar!',
+  
+    }).then((result)=>{
+      if (result.isConfirmed){
+        $.ajax({
+          url: url +id,
+          type: "DELETE",
+          success: function(result){
+            swal.fire(
+              'Deshabilitado',
+              'El registro ha sido deshabilitado ',
+              'success'
+            );
+            listarMedico();//recarga la lista de medicos
+          },
+          error: function(error){
+            Swal.fire(
+              'Error',
+              'No se puede deshabilitar el registro ',
+              'Error',
+            );
+          }
+        });
+      }
+    });
+  }
 
 
 
