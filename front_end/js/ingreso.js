@@ -92,7 +92,7 @@ function listarIngreso() {
 
           let ingresoIdParaDeshabilitar= result[i]["id_ingreso"]; 
           botonDeshabilitaringreso.onclick=function(){
-            desahiblitaringreso(ingresoIdParaDeshabilitar);
+            deshabilitarIngreso(ingresoIdParaDeshabilitar);
           }
           celdaOpcion.appendChild(botonDeshabilitaringreso); 
           trRegistro.appendChild(celdaOpcion)
@@ -348,7 +348,7 @@ function limpiar(){
  document.getElementById("estado").value="";
 }
 // funcion  de deshabilitar ingreso
-function desahiblitaringreso(id){
+function deshabilitarIngreso(id){
   swal.fire({
     title: '¿Estás seguro?',
     text: "Esta opción no tiene marcha atrás",
@@ -356,7 +356,8 @@ function desahiblitaringreso(id){
     showCancelButton: true,
     confirmButtonColor:'#3085d6',
     cancelButtonColor:'#d33',
-    confirmButtonText:'sí, deshabilitar!',
+    cancelButtonText:'Cancelar',
+    confirmButtonText:'Sí, deshabilitar!',
 
   }).then((result)=>{
     if (result.isConfirmed){

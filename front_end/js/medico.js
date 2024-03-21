@@ -81,7 +81,7 @@ function listarMedico() {
  
                  let medicoIdParaDeshabilitar= result[i]["id_medico"]; 
                  botonDeshabilitarmedico.onclick=function(){
-                   desahiblitarmedico(medicoIdParaDeshabilitar);
+                   deshabilitarMedico(medicoIdParaDeshabilitar);
                  }
                  celdaOpcion.appendChild(botonDeshabilitarmedico); 
                  trRegistro.appendChild(celdaOpcion)
@@ -326,15 +326,16 @@ function limpiar(){
     document.getElementById("estado").value="";
 }
 // funcion  de deshabilitar medico
-function desahiblitarmedico(id){
+function deshabilitarMedico(id){
     swal.fire({
       title: '¿Estás seguro?',
       text: "Esta opción no tiene marcha atrás",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor:'#3085d6',
+      cancelButtonText:'Cancelar',
       cancelButtonColor:'#d33',
-      confirmButtonText:'si, deshabilitar!',
+      confirmButtonText:'Sí, deshabilitar!',
   
     }).then((result)=>{
       if (result.isConfirmed){
