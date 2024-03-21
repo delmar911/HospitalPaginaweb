@@ -49,17 +49,26 @@ implements IpacienteService
 		return paciente;
 	}
 
-	@Override
-	public int delete(String id) {
-		data.deleteById(id);
-		return 1;
-	}
+	// @Override
+	// public int delete(String id) {
+	// 	data.deleteById(id);
+	// 	return 1;
+	// }
 
 	@Override
 	public List<paciente>filtroCedulaPaciente(String numero_documento ) {
 		List<paciente>ListaPaciente=data.filtroCedulaPaciente(numero_documento);
 		return ListaPaciente;
 	}
-	
+
+	@Override
+	public int delete(String id_paciente) {
+		var paciente=data.findById(id_paciente).get();
+		paciente.setEstado("inactivo"); 
+        data.save(paciente); 
+		return 0;
+	}
 }
+	
+
 

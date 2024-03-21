@@ -62,11 +62,19 @@ public class pacienteController {
 			
 		}
 		
-		@DeleteMapping("/eliminarPermanente/{id}")
-		public ResponseEntity<Object> delete(@PathVariable String id){
-			 pacienteService.delete(id);
-					return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
+	// @DeleteMapping("/eliminarPermanente/{id}")
+		// public ResponseEntity<Object> delete(@PathVariable String id){
+		// 	 pacienteService.delete(id);
+		// 			return new ResponseEntity<>("Registro Eliminado",HttpStatus.OK);
+		// }
+        
+		//eliminado logico
+		@DeleteMapping("/{id_paciente}")
+		public ResponseEntity<Object> delete(@PathVariable String id_paciente){
+			 pacienteService.delete(id_paciente);
+					return new ResponseEntity<>("Registro Deshabilitado",HttpStatus.OK);
 		}
+		
 		@PutMapping("/{id}")
 		public ResponseEntity<Object> update(@PathVariable String id, @ModelAttribute("paciente")paciente pacienteUpdate){
 			var paciente = pacienteService.findOne(id).get();

@@ -91,6 +91,18 @@ function listarPaciente() {
 
                 cuerpoTablaPaciente.appendChild(trRegistro);//se traen todos los registros
 
+                //boton desahiblitar- la funcion de deshabilitar se encuentra abajo 
+                let botonDeshabilitarPaciente= document.createElement("button");
+                botonDeshabilitarPaciente.innerHTML="<i class='fa-solid fa-trash'></i>"; 
+                botonDeshabilitarPaciente.className="btn btn-primary"; 
+
+                let medicoIdParaDeshabilitar= result[i]["id_paciente"]; 
+                botonDeshabilitarPaciente.onclick=function(){
+                  desahiblitarPaciente(medicoIdParaDeshabilitar);
+                }
+                celdaOpcion.appendChild(botonDeshabilitarPaciente); 
+                trRegistro.appendChild(celdaOpcion)
+
             }
         },
         error:function(error){
@@ -359,5 +371,40 @@ function limpiar(){
   document.getElementById("estado").value="";
 }
 
+// funcion  de deshabilitar paciente
+function desahiblitarPaciente(id){
+  swal.fire({
+    title: '¿ Estas seguro?',
+    text: "Esta opcion no tiene marcha atras",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor:'#3085d6',
+    cancelButtonColor:'#d33',
+    confirmButtonText:'si, deshabilitar!',
+
+  }).then((result)=>{
+    if (result.isConfirmed){
+      $.ajax({
+        url: url +id,
+        type: "DELETE",
+        success: function(result){
+          swal.fire(
+            'Deshabilitado',
+            'El registro ha sido deshabilitado ',
+            'success'
+          );
+          listarPaciente();//recarga la lista de medicos
+        },
+        error: function(error){
+          Swal.fire(
+            'Error',
+            'no se puede deshabilitar el registro ',
+            'Error',
+          );
+        }
+      });
+    }
+  });
+}
 
 
