@@ -178,8 +178,8 @@ function validarCampos() {
 function validarNumeroDocumento(cuadroNumero){
     var valor=cuadroNumero.value; 
     var valido=true; 
-    if(valor.length<5 || valor.length>11){
-      valido=false
+    if(valor.length<5 || valor.length>10){
+      valido=false    
     }
     if (valido) {
       //cuadro de texto cumple

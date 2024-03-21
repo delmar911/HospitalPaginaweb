@@ -32,7 +32,7 @@ public class paciente {
 	@Column(name = "segundo_apellido", nullable = true, length = 30)
 	private String segundo_apellido;
 	
-	@Column(name = "celular", nullable = false, length = 10)
+	@Column(name = "celular", nullable = false, length = 13)
 	private String celular;
 	
 	@Column(name = "direccion", nullable = false, length = 50)
@@ -44,7 +44,7 @@ public class paciente {
     @Column(name = "nombre_persona_contacto", nullable = false, length = 100)
 	private String nombre_persona_contacto;
 
-    @Column(name = "celular_persona_contacto", nullable = false, length = 11)
+    @Column(name = "celular_persona_contacto", nullable = false, length = 13)
 	private String celular_persona_contacto;
     
     @Column(name = "estado", nullable = false, length = 10)

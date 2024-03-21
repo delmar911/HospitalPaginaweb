@@ -34,7 +34,7 @@ public class medico {
 	@Column(name = "segundo_apellido", nullable = true, length = 30)
 	private String segundo_apellido;
 	
-	@Column(name = "celular", nullable = false, length = 10)
+	@Column(name = "celular", nullable = false, length = 13)
 	private String celular;
 
 	@Column(name = "correo_electronico", nullable = false, length = 255)
