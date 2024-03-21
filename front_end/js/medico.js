@@ -171,7 +171,7 @@ function validarNumeroDocumento(cuadroNumero) {
 
     let valor = cuadroNumero.value;
     let valido = true;
-    if (valor.length < 5 || valor.length > 11) {
+    if (valor.length < 5 || valor.length > 10) {
         valido = false;
     }
 
@@ -277,7 +277,7 @@ function updateMedico() {
     }else{
         Swal.fire({
             title: "Error!",
-            text: "complete los campos correctamente",
+            text: "Complete los campos correctamente",
             icon: "error"
         });
         }
