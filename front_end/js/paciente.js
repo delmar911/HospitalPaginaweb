@@ -84,7 +84,7 @@ function listarPaciente() {
                 //boton desahiblitar- la funcion de deshabilitar se encuentra abajo 
                 let botonDeshabilitarPaciente= document.createElement("button");
                 botonDeshabilitarPaciente.innerHTML="<i class='fa-solid fa-trash'></i>"; 
-                botonDeshabilitarPaciente.className="btn btn-primary"; 
+                botonDeshabilitarPaciente.className="btn btn-danger"; 
 
                 let medicoIdParaDeshabilitar= result[i]["id_paciente"]; 
                 botonDeshabilitarPaciente.onclick=function(){

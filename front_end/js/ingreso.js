@@ -88,7 +88,7 @@ function listarIngreso() {
           //boton desahiblitar- la funcion de deshabilitar se encuentra abajo 
           let botonDeshabilitaringreso= document.createElement("button");
           botonDeshabilitaringreso.innerHTML="<i class='fa-solid fa-trash'></i>"; 
-          botonDeshabilitaringreso.className="btn btn-primary"; 
+          botonDeshabilitaringreso.className="btn btn-danger"; 
 
           let ingresoIdParaDeshabilitar= result[i]["id_ingreso"]; 
           botonDeshabilitaringreso.onclick=function(){
