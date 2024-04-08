@@ -38,6 +38,36 @@ public class pacienteController {
 			if(listaPacienteValidacion.size()!=0){
 				//ya tiene un registro activo
 				return new ResponseEntity<>("El paciente ya se encuentra registrado",HttpStatus.BAD_REQUEST);		
+			}
+			if (paciente.getTipo_documento().equals("")) {
+				return new ResponseEntity<>("El tipo documento es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getNumero_documento().equals("")) {
+				return new ResponseEntity<>("El número de documento es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getPrimer_nombre().equals("")) {
+				return new ResponseEntity<>("El primer nombre es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getPrimer_apellido().equals("")) {
+				return new ResponseEntity<>("El primer apellido es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getCorreo_electronico().equals("")) {
+				return new ResponseEntity<>("El correo electronico es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getCelular().equals("")) {
+				return new ResponseEntity<>("El número celular es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getDireccion().equals("")) {
+				return new ResponseEntity<>("La dirección es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getEstado().equals("")) {
+				return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (paciente.getCelularPersonaContacto().equals("")) {
+				return new ResponseEntity<>("El número de persona de contacto es obligatorio", HttpStatus.BAD_REQUEST);
+			}	
+			if (paciente.getNombrePersonaContacto().equals("")) {
+				return new ResponseEntity<>("El nombre de persona de contacto es obligatorio", HttpStatus.BAD_REQUEST);
 			}	
 		pacienteService.save(paciente);
 		return new ResponseEntity<>(paciente,HttpStatus.OK);

@@ -27,15 +27,39 @@ public class medicoController {
 	private ImedicoService medicoService;
 	
 	@PostMapping("/")
-	public ResponseEntity<Object> save(
-			@ModelAttribute("medico") medico medico
-			){
+	public ResponseEntity<Object> save(@ModelAttribute("medico") medico medico){
 			// condicion para cuando ya exista el  registro 
 			  List<medico>listaMedicoValidacion=medicoService.filtroCedulaMedico(medico.getNumero_documento());
 			if(listaMedicoValidacion.size()!=0){
 				//ya tiene un registro activo
 				return new ResponseEntity<>("El medico ya se encuentra registrado",HttpStatus.BAD_REQUEST);		
 			}	
+			if (medico.getTipo_documento().equals("")) {
+				return new ResponseEntity<>("El tipo documento es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getNumero_documento().equals("")) {
+				return new ResponseEntity<>("El número de documento es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getPrimer_nombre().equals("")) {
+				return new ResponseEntity<>("El primer nombre es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getPrimer_apellido().equals("")) {
+				return new ResponseEntity<>("El primer apellido es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getCorreo_electronico().equals("")) {
+				return new ResponseEntity<>("El correo electronico es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getCelular().equals("")) {
+				return new ResponseEntity<>("El número celular es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getDireccion().equals("")) {
+				return new ResponseEntity<>("La dirección es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (medico.getEstado().equals("")) {
+				return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			
+			
 		medicoService.save(medico);
 		return new ResponseEntity<>(medico,HttpStatus.OK);
 	}
@@ -94,4 +118,5 @@ public class medicoController {
 			}
 				
 			}
+			
 }

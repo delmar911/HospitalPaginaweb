@@ -45,6 +45,28 @@ public class ingresoController {
 				//ya tiene un registro activo
 				return new ResponseEntity<>("la cama y la habitación ya se encuentran ocupada",HttpStatus.BAD_REQUEST);		
 			}
+
+			if (ingreso.getCama().equals("")) {
+				return new ResponseEntity<>("la cama es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getHabitacion().equals("")) {
+				return new ResponseEntity<>("la habitación es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getFecha_ingreso().equals("")) {
+				return new ResponseEntity<>("la fecha de ingreso es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getFecha_salida().equals("")) {
+				return new ResponseEntity<>("la fecha de salida es obligatoria", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getPaciente().equals("")) {
+				return new ResponseEntity<>("EL paciente es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getMedico().equals("")) {
+				return new ResponseEntity<>("EL medico es obligatorio", HttpStatus.BAD_REQUEST);
+			}
+			if (ingreso.getEstado().equals("")) {
+				return new ResponseEntity<>("El estado es obligatorio", HttpStatus.BAD_REQUEST);
+			}
 		ingresoService.save(ingreso);
 		return new ResponseEntity<>(ingreso,HttpStatus.OK);
 	}
